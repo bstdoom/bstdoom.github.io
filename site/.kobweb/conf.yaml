@@ -1,0 +1,14 @@
+site:
+  title: "B.S.T. - Hamburg City Doom"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/www.js"
+      api: "build/libs/www.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/www.js"
+      siteRoot: ".kobweb/site"
+
+  port: 9357
