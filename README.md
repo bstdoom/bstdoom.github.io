@@ -57,4 +57,8 @@ https://bitspittle.dev/blog/2022/staticdeploy
 
 ## Logbook
 
-* [How to deploy on github](https://bitspittle.dev/blog/2022/static-deploy#how-to-deploy-a-static-website) - this helped to setup teh workflow
+* [How to deploy on github](https://bitspittle.dev/blog/2022/static-deploy#how-to-deploy-a-static-website) - this helped to setup the workflow
+
+## Docs
+
+* [Unleash the power](https://medium.com/@binayshaw7777/unleash-the-power-of-kotlin-build-awesome-sites-using-kobweb-dbe588b0c2fb)
