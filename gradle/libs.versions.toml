@@ -1,5 +1,5 @@
 [versions]
-jetbrains-compose = "1.10.1"
+jetbrains-compose = "1.10.2"
 kobweb = "0.23.1"
 kotlin = "2.3.10"
 
