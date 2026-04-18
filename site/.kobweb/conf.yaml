@@ -1,0 +1,14 @@
+site:
+  title: "B.S.T."
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/bstdoom.js"
+      api: "build/libs/bstdoom.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/bstdoom.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
