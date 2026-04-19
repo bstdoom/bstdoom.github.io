@@ -1,7 +1,7 @@
 # General ignores
 .DS_Store
-build
-out
+build/
+out/
 kotlin-js-store
 
 # IntelliJ ignores
@@ -23,7 +23,10 @@ kotlin-js-store
 /.idea/libraries-with-intellij-classes.xml
 
 # Gradle ignores
-.gradle
+.gradle/
 
 # Kotlin ignores
-.kotlin
+.kotlin/
+
+site/.kobweb/*
+!site/.kobweb/conf.yaml
