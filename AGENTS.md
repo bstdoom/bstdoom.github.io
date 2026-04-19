@@ -12,8 +12,8 @@ The previous website is broken and cannot be repaired. The goal is to **reproduc
   https://web.archive.org/web/20250812070114/http://www.b-s-t.net/
 
 - Local project archive (inside this repo):
-  - `_archive/`: contains the original **Grav CMS project** that generated the site
-  - `_archive/theme/`: contains the purchased theme ("vocal") used for layout and styling
+  - `_tmp/`: contains the original **Grav CMS project** that generated the site
+  - `_tmp/theme/`: contains the purchased theme ("vocal") used for layout and styling
 
 ### Important Notes
 
@@ -57,7 +57,7 @@ This structure should be reusable across all pages.
 ### Phase 3: Styling
 
 - Recreate the visual style using:
-  - The `vocal` theme (from `_archive/theme`)
+  - The `vocal` theme (from `_tmp/theme`)
   - The archived website as visual reference
 - Extract colors, typography, spacing, and layout patterns
 
@@ -95,9 +95,11 @@ This structure should be reusable across all pages.
 - When unsure, follow the archived website
 - Reuse existing assets where possible
 - Avoid overengineering
+- consider all md files under `.agents/`
 
 ---
 
 ## Open Questions
 
 The agent should clarify unclear aspects before proceeding with major decisions.
+

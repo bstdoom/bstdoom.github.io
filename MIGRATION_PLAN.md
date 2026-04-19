@@ -6,16 +6,16 @@
 - The active site code is minimal:
   - `site/src/jsMain/kotlin/io/github/bstdoom/AppEntry.kt`
   - `site/src/jsMain/kotlin/io/github/bstdoom/pages/Index.kt`
-- Historical source material is available locally in `_archive/`.
+- Historical source material is available locally in `_tmp/`.
 - `AGENTS.md` sets the working rule clearly:
   - Wayback snapshot is the source of truth for content.
   - Grav content and the `vocal` theme are reference material for structure and styling.
 
-## What Is In `_archive`
+## What Is In `_tmp`
 
 ### Grav content
 
-The useful content lives mainly in `_archive/www/user/pages`.
+The useful content lives mainly in `_tmp/www/user/pages`.
 
 - Main sections found there:
   - `01.home`
@@ -29,7 +29,7 @@ The useful content lives mainly in `_archive/www/user/pages`.
 
 ### Theme structure
 
-The useful theme material lives in `_archive/theme`.
+The useful theme material lives in `_tmp/theme`.
 
 - Important Twig templates:
   - `templates/partials/base.html.twig`
@@ -48,7 +48,7 @@ The useful theme material lives in `_archive/theme`.
   - `css/preset5.css`
   - `css/bootstrap.min.css`
   - `images/logo.png`
-  - background images under `_archive/www/user/pages/images/background`
+  - background images under `_tmp/www/user/pages/images/background`
 
 ### Real page patterns we need to reproduce
 
@@ -87,7 +87,7 @@ Goal: make migration deterministic before writing much UI.
 
 Steps:
 
-1. Create a content inventory document from the Wayback snapshot and `_archive/www/user/pages`.
+1. Create a content inventory document from the Wayback snapshot and `_tmp/www/user/pages`.
 2. For each route, record:
    - final URL
    - page title
@@ -236,7 +236,7 @@ Deliverable:
 
 This is the order I would actually execute next in the repo:
 
-1. Create a content inventory from Wayback plus `_archive/www/user/pages`.
+1. Create a content inventory from Wayback plus `_tmp/www/user/pages`.
 2. Replace the starter `Index.kt` with a real `SiteScaffold`.
 3. Port the header, footer, typography, and background styling.
 4. Build the modular home page sections.
@@ -248,7 +248,7 @@ This is the order I would actually execute next in the repo:
 - Do not attempt to port Grav templates one-to-one.
 - Do not carry over outdated jQuery plugin behavior unless it is clearly needed.
 - Do not over-abstract content management; the site is small enough for static data structures.
-- Do not trust `_archive/www` content over Wayback when there is a conflict.
+- Do not trust `_tmp/www` content over Wayback when there is a conflict.
 
 ## Open Questions Before Major Implementation
 

@@ -25,7 +25,7 @@ Implement the `Info` section next.
 
 Suggested order:
 
-1. Add `/info/` route from `_archive/www/user/pages/05.Info/info.de.md`
+1. Add `/info/` route from `_tmp/www/user/pages/05.Info/info.de.md`
 2. Recreate the info layout with:
    - main content on the left
    - downloads/files widget on the right
@@ -46,7 +46,7 @@ Suggested order:
 - Plan: `MIGRATION_PLAN.md`
 - Content inventory: `docs/content-inventory.md`
 - Archive source of interest:
-  - `_archive/www/user/pages/05.Info`
-  - `_archive/www/user/pages/99.english`
-  - `_archive/theme/templates/info.html.twig`
-  - `_archive/theme/templates/modular-sidebar.html.twig`
+  - `_tmp/www/user/pages/05.Info`
+  - `_tmp/www/user/pages/99.english`
+  - `_tmp/theme/templates/info.html.twig`
+  - `_tmp/theme/templates/modular-sidebar.html.twig`
