@@ -1,26 +1,121 @@
 package io.github.bstdoom.pages
 
-import androidx.compose.runtime.*
-import com.varabyte.kobweb.compose.foundation.layout.Box
-import com.varabyte.kobweb.compose.ui.Alignment
-import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import org.jetbrains.compose.web.css.vh
-import org.jetbrains.compose.web.dom.Text
-import com.varabyte.kobweb.worker.rememberWorker
-import io.github.bstdoom.worker.EchoWorker
+import io.github.bstdoom.components.AboutSection
+import io.github.bstdoom.components.BandMember
+import io.github.bstdoom.components.BandSection
+import io.github.bstdoom.components.HomeHeroSection
+import io.github.bstdoom.components.IntroNotice
+import io.github.bstdoom.components.LinkGroup
+import io.github.bstdoom.components.LinkItem
+import io.github.bstdoom.components.LinksSection
+import io.github.bstdoom.components.NavLink
+import io.github.bstdoom.components.SiteScaffold
 
 @Page
 @Composable
 fun HomePage() {
-    val worker = rememberWorker { EchoWorker { output -> console.log("Echoed: $output") } }
-    LaunchedEffect(Unit) {
-        worker.postInput("Hello, worker!")
-    }
-
-    // TODO: Replace the following with your own content
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("THIS PAGE INTENTIONALLY LEFT BLANK")
+    SiteScaffold(
+        navLinks = listOf(
+            NavLink("/", "Home"),
+            NavLink("/musik/", "Musik"),
+            NavLink("/info/", "Info"),
+            NavLink("/english/", "en"),
+        )
+    ) {
+        HomeHeroSection()
+        IntroNotice()
+        AboutSection()
+        BandSection(
+            members = listOf(
+                BandMember(
+                    name = "Heiko W.",
+                    role = "Gitarre, Gesang",
+                    info = "Gründungsmitglied, Freizeit-Folker",
+                    image = "/assets/home/band-heiko.png",
+                ),
+                BandMember(
+                    name = "Jan G.",
+                    role = "Schlagzeug",
+                    info = "Gründungsmitglied, Slayer-Maniac",
+                    image = "/assets/home/band-jan.png",
+                ),
+                BandMember(
+                    name = "Jan R.",
+                    role = "Gitarre",
+                    info = "Nesthaken (2009), Randy Rhodes-Jünger",
+                    image = "/assets/home/band-jan2.png",
+                ),
+                BandMember(
+                    name = "Lutz R.",
+                    role = "Bass",
+                    info = "Seit 1998, Silberrücken",
+                    image = "/assets/home/band-lutz.png",
+                ),
+            )
+        )
+        LinksSection(
+            groups = listOf(
+                LinkGroup(
+                    title = "Bands",
+                    items = listOf(
+                        LinkItem("Ophis", "http://www.ophisdoom.de/", "Hamburg"),
+                        LinkItem("Rage of Samedi", "https://www.facebook.com/RageOfSamedi/?fref=ts"),
+                        LinkItem("zqkgdz", "http://www.zqkmgdz.de/", "Lübeck"),
+                        LinkItem("Apostle of Solitude", "http://apostleofsolitude.com/", "Indiana/US"),
+                        LinkItem("Swamp Corpse", "http://swamp-corpse.com/", "Hamburg"),
+                        LinkItem("Mayfair", "http://www.mayfairbrigade.com/"),
+                        LinkItem("Crimson Swan", "http://www.crimsonswan.de/", "Hamburg"),
+                        LinkItem("Brother Love Kain", "https://myspace.com/brotherlovekain/", "Osnabrück"),
+                        LinkItem("Opium Divan", "https://www.facebook.com/opiumdivan", "Paderborn"),
+                        LinkItem("Dust", "http://www.dust-doom.de", "Bielefeld"),
+                        LinkItem("Bleeding", "http://bleeding1.bandcamp.com/releases", "Stade"),
+                        LinkItem("The Giant's Vault", "https://www.facebook.com/The-Giants-Vault-1033417690033062/?fref=ts"),
+                        LinkItem("The Hidden Spirit", "http://thehiddenspirit.de", "Hamburg"),
+                        LinkItem("The Great Realities of Tomorrow", "http://www.thegreatrealities.band/", "Hamburg"),
+                        LinkItem("Shakhtyor", "https://www.facebook.com/shakhtyorband", "Hamburg"),
+                    )
+                ),
+                LinkGroup(
+                    title = "Produktion",
+                    items = listOf(
+                        LinkItem("Voodoo Chamber Records", "http://www.voodoo-chamber-records.com"),
+                        LinkItem("RosenQuarz Tonstudio", "http://www.rosenquarz-tonstudio.de"),
+                        LinkItem("Pink Tank Records", "https://www.pink-tank-records.de"),
+                        LinkItem("Musikbunker Hamburg", "http://musikbunker-hamburg.de/"),
+                        LinkItem("KS Musik (Presswerk)", "http://ks-musik.de/"),
+                        LinkItem("Pallas Group (Presswerk)", "http://www.pallas-group.de/schallplatte/"),
+                    )
+                ),
+                LinkGroup(
+                    title = "Kontakt",
+                    items = listOf(
+                        LinkItem("band@b-s-t.net", "mailto:band@b-s-t.net"),
+                        LinkItem("Bandcamp", "http://bstdoom.bandcamp.com/"),
+                        LinkItem("Bandnet", "http://www.bandnet.de/band/bst"),
+                        LinkItem("Facebook (official)", "http://facebook.com/hamburgcitydoom"),
+                        LinkItem("twitter", "http://twitter.com/bstdoom"),
+                        LinkItem("last.fm", "http://www.lastfm.de/music/B.S.T."),
+                        LinkItem("metal-archives", "http://www.metal-archives.com/bands/B.S.T./3540310143"),
+                    )
+                ),
+                LinkGroup(
+                    title = "Magazine",
+                    items = listOf(
+                        LinkItem("Deaf Forever", "http://www.deaf-forever.de/"),
+                        LinkItem("Doom Metal Front", "http://doommetalfront.blogspot.de/"),
+                        LinkItem("Legacy", "http://www.legacy.de"),
+                        LinkItem("Neckbreaker", "http://neckbreaker.de/"),
+                        LinkItem("Obliveon", "http://www.obliveon.de/"),
+                        LinkItem("Powermetal", "http://powermetal.de/"),
+                        LinkItem("Rock Hard", "https://www.rockhard.de"),
+                        LinkItem("Sacredmetal", "http://sacredsacredmetal.blogspot.de"),
+                        LinkItem("Undergrounded", "http://www.undergrounded.de/"),
+                        LinkItem("Streetclip.tv", "http://www.streetclip.tv/"),
+                    )
+                ),
+            )
+        )
     }
 }
