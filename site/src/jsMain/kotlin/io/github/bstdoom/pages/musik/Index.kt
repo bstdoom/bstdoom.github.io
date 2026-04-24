@@ -28,7 +28,6 @@ fun MusikPage() {
             NavLink("/", "Home"),
             NavLink("/musik/", "Musik"),
             NavLink("/info/", "Info"),
-            NavLink("/english/", "en"),
         )
     ) {
         Section(attrs = { classes("bg", "site-panel", "music-page-intro") }) {
@@ -36,7 +35,7 @@ fun MusikPage() {
                 Text("Musik")
             }
             P(attrs = { classes("music-intro-copy") }) {
-                Text("Releases, EPs, and the early demo from the archive. This route now mirrors the old music overview structure and links forward to the detail pages that come next.")
+                Text("Hier findest Du unsere Veröffentlichungen im Überblick.")
             }
         }
 

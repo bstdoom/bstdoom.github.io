@@ -3,6 +3,7 @@ package io.github.bstdoom.components
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Br
+import org.jetbrains.compose.web.dom.B
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H2
 import org.jetbrains.compose.web.dom.H3
@@ -12,6 +13,7 @@ import org.jetbrains.compose.web.dom.Li
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Section
 import org.jetbrains.compose.web.dom.Text
+import org.jetbrains.compose.web.dom.Ol
 import org.jetbrains.compose.web.dom.Ul
 
 data class Track(
@@ -109,13 +111,11 @@ fun SidebarWidget(
 @Composable
 fun TracksWidget(tracks: List<Track>) {
     SidebarWidget(title = "Tracks") {
-        Ul(attrs = { classes("play-list") }) {
+        Ol(attrs = { classes("play-list") }) {
             tracks.forEach { track ->
                 Li {
-                    Text(track.name)
-                    Div(attrs = { classes("track-time") }) {
-                        Text(track.time)
-                    }
+                    B { Text(track.name) }
+                    Text(" (${track.time})")
                 }
             }
         }

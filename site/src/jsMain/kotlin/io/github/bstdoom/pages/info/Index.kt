@@ -22,7 +22,6 @@ fun InfoPage() {
             NavLink("/", "Home"),
             NavLink("/musik/", "Musik"),
             NavLink("/info/", "Info"),
-            NavLink("/english/", "en"),
         )
     ) {
         Section(attrs = { classes("info-page", "release-detail-page") }) {
@@ -44,22 +43,22 @@ fun InfoPage() {
                         )
                         Div(attrs = { classes("entry-content") }) {
                             P {
-                                Text("Wer macht schon Doom Metal mit deutschen Texten? Im Grunde niemand. Insofern sind B.S.T. aus Hamburg echte Genre-Pioniere. Ihr Metal fließt dahin wie Lava und kein englisches Wort kommt über ihre Lippen.")
+                                Text("Wer macht schon Doom Metal mit deutschen Texten? Im Grunde niemand! Insofern sind B.S.T. aus Hamburg echte Genre-Pioniere. Ihr Metal fließt dahin wie Lava und kein englisches Wort kommt über ihre Lippen.")
                             }
                             P {
-                                Text("Die Combo besteht aus den langjährigen Freunden Heiko Wenck, Jan Rudßuck, Lutz Reimer und Jan Galinski. Zu Anfang war ihre Musik noch deutlich Core-lastiger, das Bandgefüge noch auf Feierabend-Niveau.")
+                                Text("Die Combo besteht aus den langjährigen Freunden Heiko Wenck (Gitarre & Gesang), Jan Rudßuck (Gitarre), Lutz Reimer (Bass) und Jan Galinski (Schlagzeug). Zu Anfang war ihre Musik noch deutlich Core-lastiger, das Bandgefüge noch auf Feierabend-Niveau.")
                             }
                             P {
-                                Text("Unter Blut, Schweiß und Tränen schält sich nach und nach ein zähflüssiger Marmeladenmetal heraus. Das Ergebnis taufen sie \"Hamburg City Doom\". Ein Tröpfchen Black Sabbath, mehr Saint Vitus plus eine gehörige Portion Candlemass kann man als Einfluss deutlich heraushören.")
+                                Text("Unter Blut, Schweiß und Tränen (so ihr ausgeschriebener Name) schält sich nach und nach ein zähflüssiger Marmeladenmetal heraus. Das Ergebnis taufen sie „Hamburg City Doom“. Und genau so klingt es auch. Die Gründerväter des Stils stehen Pate. Ein Tröpfchen Black Sabbath, mehr Saint Vitus plus eine gehörige Portion Candlemass kann man als Einfluss recht deutlich heraushören.")
                             }
                             P {
-                                Text("Genau aus diesem Stahl ist ihr 2013er Debüt \"Die Illusion\" geschnitzt. Trotz der nebenher notwendigen Berufstätigkeit macht das Haus B.S.T. alles in Eigenregie: Band, Produktion und Label in Personalunion.")
+                                Text("Genau aus diesem Stahl ist ihr 2013er Debüt „Die Illusion“ geschnitzt. Trotz der nebenher notwendigen Berufstätigkeit macht das Haus B.S.T. alles in Eigenregie. Die Band ist Künstler, Produzent und Label in Personalunion. Alles nach dem Motto: Selbst ist der „Iron Man“. Für das ansprechende Artwork knipst man kurzerhand eine Statue namens „Das Schicksal“ vom Ohlsdorfer Friedhof nebenan.")
                             }
                             P {
-                                Text("Der Clou ihrer Mucke sind gleichwohl ihre deutschen Zeilen. Alles Leid und allen Schmerz dieser Welt kleiden sie in anschauliche und sprachlich anspruchsvolle, mitunter gar poetische Worte.")
+                                Text("Der Clou ihrer Mucke sind gleichwohl ihre deutschen Zeilen. Bei den meisten Metaltruppen klappen sich einem die Zehennägel hoch, so man sich die meist tumben Ficken-, Tod- und Teufel-Lyrics einmal in die Heimatsprache übersetzt. Nicht so B.S.T.! Alles Leid, allen Schmerz dieser Welt kleiden sie in anschauliche und sprachlich anspruchsvolle, mitunter gar poetische Worte. In den besten Momenten hat es ein wenig von My Dying Bride oder Dornenreich.")
                             }
                             P {
-                                Text("Kein Wunder, denn hier schlägt kein öder Hirnfurz zu, sondern das pralle Leben: Hauptsongwriter und Texter Wenck verarbeitet in den Songs Erfahrungen, die weit über bloße Pose hinausgehen.")
+                                Text("Kein Wunder, denn hier schlägt kein öder Hirnfurz zu, sondern das pralle Leben: B.S.T.: „Hauptsongwriter und Texter Wenck sieht sich durch seinen Beruf als Alten- und Krankenpfleger täglich mit mehr Leid und Elend pro Tag konfrontiert als der Durchschnittsmensch im Leben. Dieses Erfahren verarbeitet er als klassischen inneren Konflikt. Auch wenn die Sprache im Rock sperriger klingt als im Englischen“.")
                             }
                             P(attrs = { classes("info-attribution") }) {
                                 Text("Ulf Kubanke, laut.de")
@@ -70,22 +69,28 @@ fun InfoPage() {
                 Div(attrs = { classes("sidebar-inner") }) {
                     DownloadsWidget(
                         items = listOf(
-                            DownloadItem(
-                                title = "Unser Logo zur Gestaltung von Flyern etc.",
-                                href = "/assets/info/bst-logo.tiff",
-                                thumbnail = "/assets/info/bst-logo-thumb.png",
-                                alt = "B.S.T. Logo",
-                            ),
-                            DownloadItem(
-                                title = "Bandfoto",
-                                href = "/assets/info/bst-bandfoto.jpg",
-                                thumbnail = "/assets/info/bst-bandfoto-thumb.png",
-                                alt = "Bandfoto",
-                            ),
-                            DownloadItem(
-                                title = "Equipment und Bühnenaufbau für Mischer/Bühnentechniker",
-                                href = "/assets/info/bst-technical-rider.pdf",
-                                thumbnail = "/assets/info/bst-technical-rider-thumb.png",
+                        DownloadItem(
+                            title = "Unser Logo zur Gestaltung von Flyern etc.",
+                            href = "/assets/info/bst-logo.tiff",
+                            thumbnail = "/assets/info/bst-logo-thumb.png",
+                            alt = "B.S.T. Logo",
+                        ),
+                        DownloadItem(
+                            title = "Unser Logo als SVG zur Gestaltung von Flyern etc.",
+                            href = "/assets/info/bst-logo.svg",
+                            thumbnail = "/assets/info/bst-logo.svg-thumb.png",
+                            alt = "B.S.T. Logo SVG",
+                        ),
+                        DownloadItem(
+                            title = "Bandfoto",
+                            href = "/assets/info/bunker.jpg",
+                            thumbnail = "/assets/info/bunker.jpg-thumb.png",
+                            alt = "Bandfoto",
+                        ),
+                        DownloadItem(
+                            title = "Equipment und Bühnenaufbau für Mischer/Bühnentechniker",
+                            href = "/assets/info/bst-technical-rider.pdf",
+                            thumbnail = "/assets/info/bst-technical-rider-thumb.png",
                                 alt = "Technical Rider",
                             ),
                             DownloadItem(

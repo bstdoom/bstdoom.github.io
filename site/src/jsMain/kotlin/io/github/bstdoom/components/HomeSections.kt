@@ -15,11 +15,18 @@ import org.jetbrains.compose.web.dom.Span
 import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.dom.Ul
 
+data class BandSocialLink(
+    val label: String,
+    val href: String,
+    val iconClasses: List<String>,
+)
+
 data class BandMember(
     val name: String,
     val role: String,
     val info: String,
     val image: String,
+    val socialLinks: List<BandSocialLink> = emptyList(),
 )
 
 data class LinkGroup(
@@ -38,13 +45,13 @@ fun HomeHeroSection() {
     Section(attrs = { id("home") }) {
         Div(attrs = { classes("hero-copy") }) {
             Div(attrs = { classes("home-kicker") }) {
-                Text("19.10. - Paderborn")
+                Text("14.02 - Nürnberg - Z-Bau")
             }
             H1 {
-                Text("B.S.T. - Metal Inferno")
+                Text("B.S.T. - Hamburg City Doom")
             }
             P(attrs = { classes("hero-copy-text") }) {
-                Text("Hamburg City Doom since 1994. German lyrics, heavy riffs, and the slow kind of pressure the old site promised immediately.")
+                Text("Hamburg City Doom since 1994. Traditional doom from Hamburg, with German lyrics and a slow, crushing pulse.")
             }
         }
     }
@@ -97,20 +104,20 @@ fun AboutSection() {
                     Text("Bio")
                 }
                 P {
-                    Text("Gegründet 1994 unter dem Namen \"Blut Schweiß Tränen\", besteht die aktuelle Formation seit 2009. Die Core-Schlagseite der frühen Jahre wich nach und nach der Orientierung an Genre-Klassikern.")
+                    Text("Gegründet 1994 in Hamburg, steht B.S.T. für \"Blut, Schweiß, Tränen\". Die aktuelle Formation besteht seit 2009.")
                 }
                 P {
-                    Text("Das 2012 aufgenommene Debut-Album \"Die Illusion\" markiert dabei den vorläufigen kreativen Höhepunkt, der alle Markenzeichen spielerisch vereint.")
+                    Text("Ihre Doom-Metal-Musik ist so dunkel und schwer wie ein Nordatlantiksturm im November. Mit ihren deutschen Texten zeichnen sie ein unerbittliches Bild von der rauen See und dem unausweichlichen Tod.")
                 }
                 P {
-                    Text("B.S.T. sind keine Band zum Selbstzweck sondern eine eingespielte und eingeschworene Gemeinschaft, das macht uns stark.")
+                    Text("B.S.T. ist definitiv keine Band für Gelegenheitssegler oder Freizeitkapitäne!")
                 }
                 H3 {
                     Text("Steckbrief")
                 }
                 Ul {
                     Li { Text("Herkunft: Hamburg, 1994") }
-                    Li { Text("Stilrichtung: Doom mit Einflüssen aus allem was langsam und hart ist") }
+                    Li { Text("Stilrichtung: Doom Einflüsse: alles was langsam und hart ist") }
                     Li { Text("Besonderheiten: Deutsche Texte") }
                 }
             }
@@ -145,6 +152,22 @@ fun BandSection(members: List<BandMember>) {
                         }
                         P {
                             Text(member.info)
+                        }
+                        if (member.socialLinks.isNotEmpty()) {
+                            Div(attrs = { classes("social-icons") }) {
+                                member.socialLinks.forEach { social ->
+                                    A(
+                                        href = social.href,
+                                        attrs = {
+                                            attr("target", "_blank")
+                                            attr("rel", "noopener noreferrer")
+                                            attr("aria-label", social.label)
+                                        }
+                                    ) {
+                                        org.jetbrains.compose.web.dom.I(attrs = { classes(*social.iconClasses.toTypedArray()) })
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -183,26 +206,5 @@ fun LinksSection(groups: List<LinkGroup>) {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun IntroNotice() {
-    Div(attrs = { classes("intro-notice") }) {
-        Text("This is the first rebuild pass of the old home page: structure, sections, and original assets are now in place. Next steps are route-level pages, styling refinement, and Wayback parity checks.")
-        Br()
-        Text("See ")
-        A(href = "/musik/") {
-            Text("Musik")
-        }
-        Text(", ")
-        A(href = "/info/") {
-            Text("Info")
-        }
-        Text(", and ")
-        A(href = "/english/") {
-            Text("English")
-        }
-        Text(" for the next routes to implement.")
     }
 }

@@ -22,7 +22,6 @@ fun HerbstPage() {
             NavLink("/", "Home"),
             NavLink("/musik/", "Musik"),
             NavLink("/info/", "Info"),
-            NavLink("/english/", "en"),
         )
     ) {
         ReleaseDetailLayout(

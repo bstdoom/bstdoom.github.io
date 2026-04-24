@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
 import io.github.bstdoom.components.AboutSection
 import io.github.bstdoom.components.BandMember
+import io.github.bstdoom.components.BandSocialLink
 import io.github.bstdoom.components.BandSection
 import io.github.bstdoom.components.HomeHeroSection
-import io.github.bstdoom.components.IntroNotice
 import io.github.bstdoom.components.LinkGroup
 import io.github.bstdoom.components.LinkItem
 import io.github.bstdoom.components.LinksSection
@@ -21,11 +21,9 @@ fun HomePage() {
             NavLink("/", "Home"),
             NavLink("/musik/", "Musik"),
             NavLink("/info/", "Info"),
-            NavLink("/english/", "en"),
         )
     ) {
         HomeHeroSection()
-        IntroNotice()
         AboutSection()
         BandSection(
             members = listOf(
@@ -34,23 +32,25 @@ fun HomePage() {
                     role = "Gitarre, Gesang",
                     info = "Gründungsmitglied, Freizeit-Folker",
                     image = "/assets/home/band-heiko.png",
+                    socialLinks = listOf(
+                        BandSocialLink("Facebook", "https://www.facebook.com/bst.band", listOf("fa", "fa-facebook")),
+                    ),
                 ),
                 BandMember(
                     name = "Jan G.",
                     role = "Schlagzeug",
                     info = "Gründungsmitglied, Slayer-Maniac",
                     image = "/assets/home/band-jan.png",
-                ),
-                BandMember(
-                    name = "Jan R.",
-                    role = "Gitarre",
-                    info = "Nesthaken (2009), Randy Rhodes-Jünger",
-                    image = "/assets/home/band-jan2.png",
+                    socialLinks = listOf(
+                        BandSocialLink("Facebook", "https://www.facebook.com/jan.galinski.74", listOf("fa", "fa-facebook")),
+                        BandSocialLink("Twitter", "https://twitter.com/jangalinski", listOf("fa", "fa-twitter")),
+                        BandSocialLink("YouTube", "https://www.youtube.com/channel/UCPyIu3_l2-VIlWdXzmEJFpQ", listOf("fa", "fa-youtube")),
+                    ),
                 ),
                 BandMember(
                     name = "Lutz R.",
                     role = "Bass",
-                    info = "Seit 1998, Silberrücken",
+                    info = "seit 1998, Silberrücken",
                     image = "/assets/home/band-lutz.png",
                 ),
             )
@@ -67,7 +67,6 @@ fun HomePage() {
                         LinkItem("Swamp Corpse", "http://swamp-corpse.com/", "Hamburg"),
                         LinkItem("Mayfair", "http://www.mayfairbrigade.com/"),
                         LinkItem("Crimson Swan", "http://www.crimsonswan.de/", "Hamburg"),
-                        LinkItem("Brother Love Kain", "https://myspace.com/brotherlovekain/", "Osnabrück"),
                         LinkItem("Opium Divan", "https://www.facebook.com/opiumdivan", "Paderborn"),
                         LinkItem("Dust", "http://www.dust-doom.de", "Bielefeld"),
                         LinkItem("Bleeding", "http://bleeding1.bandcamp.com/releases", "Stade"),

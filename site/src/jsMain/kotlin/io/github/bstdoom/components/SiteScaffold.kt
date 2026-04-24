@@ -1,6 +1,7 @@
 package io.github.bstdoom.components
 
 import androidx.compose.runtime.Composable
+import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Footer
@@ -31,7 +32,7 @@ private val infoNavChildren = listOf(
 
 private val socialNavLinks = listOf(
     NavLink(
-        "https://facebook.com/hamburgcitydoom",
+        "https://www.facebook.com/hamburgCityDoom",
         "Facebook",
         iconClasses = listOf("fa", "fa-facebook"),
     ),
@@ -52,6 +53,7 @@ fun SiteScaffold(
     navLinks: List<NavLink>,
     content: @Composable () -> Unit,
 ) {
+    val currentPath = window.location.pathname
     val renderedLinks = navLinks.map { link ->
         when (link.label) {
             "Musik" -> link.copy(children = musicNavChildren)
@@ -75,7 +77,7 @@ fun SiteScaffold(
                 Div(attrs = { classes("navbar-menu-group") }) {
                     Ul(attrs = { classes("navbar-nav", "nav-primary") }) {
                         renderedLinks.forEach { link ->
-                            NavItem(link = link)
+                            NavItem(link = link, currentPath = currentPath)
                         }
                     }
                     Ul(attrs = { classes("navbar-nav", "nav-social") }) {
@@ -107,24 +109,26 @@ fun SiteScaffold(
         }
 
         Footer(attrs = { classes("site-container", "site-footer") }) {
-            Div(attrs = { classes("updates-links", "bg") }) {
-                Div(attrs = { classes("footer-grid") }) {
-                    FooterColumn(
-                        title = "Quick Links",
-                        links = navLinks + socialNavLinks.map { it.copy(iconClasses = emptyList()) }
-                    )
-                    FooterColumn(
-                        title = "Kontakt",
-                        links = listOf(
-                            NavLink("mailto:band@b-s-t.net", "band@b-s-t.net"),
-                            NavLink("https://www.youtube.com/channel/UCZcM2xHbSAL9o1HiJu8ZO1g", "YouTube"),
-                            NavLink("https://open.spotify.com/artist/6GYU7k1jVtTH7XquD79T5V", "Spotify"),
-                        )
-                    )
-                }
-            }
             Div(attrs = { classes("footer", "text-center") }) {
-                Text("Copyright © B.S.T. Rebuilt with Kobweb.")
+                Text("copyright © 2016-2024 B.S.T. All Rights Reserved.")
+                org.jetbrains.compose.web.dom.Br()
+                Text("designed by ")
+                A(href = "http://www.themeum.com/") {
+                    Text("themeum")
+                }
+                Text(" - ")
+                A(href = "http://getgrav.org") {
+                    Text("Grav")
+                }
+                Text(" was ")
+                I(attrs = { classes("fa", "fa-code") })
+                Text(" with ")
+                I(attrs = { classes("fa", "fa-heart") })
+                Text(" by ")
+                A(href = "http://www.rockettheme.com") {
+                    Text("RocketTheme")
+                }
+                Text(".")
             }
         }
     }
@@ -133,10 +137,20 @@ fun SiteScaffold(
 @Composable
 private fun NavItem(
     link: NavLink,
+    currentPath: String,
 ) {
     val hasChildren = link.children.isNotEmpty()
+    val normalizedLink = link.href.trimEnd('/')
+    val isSelected = if (normalizedLink.isEmpty()) {
+        currentPath == "/"
+    } else {
+        currentPath == normalizedLink || currentPath.startsWith("$normalizedLink/")
+    }
 
     Li(attrs = {
+        if (isSelected) {
+            classes("selected")
+        }
         if (hasChildren) {
             classes("dropdown")
         }
@@ -144,13 +158,19 @@ private fun NavItem(
         A(href = link.href) {
             Text(link.label)
             if (hasChildren) {
-                I(attrs = { classes("fa-solid", "fa-angle-down") })
+                I(attrs = { classes("fa", "fa-angle-down") })
             }
         }
         if (hasChildren) {
             Ul(attrs = { classes("sub-menu") }) {
                 link.children.forEach { child ->
-                    Li {
+                    val normalizedChild = child.href.trimEnd('/')
+                    val childSelected = currentPath == normalizedChild || currentPath.startsWith("$normalizedChild/")
+                    Li(attrs = {
+                        if (childSelected) {
+                            classes("selected")
+                        }
+                    }) {
                         A(href = child.href) {
                             Text(child.label)
                         }
