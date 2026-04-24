@@ -97,6 +97,22 @@ iframe {
   padding: 0;
 }
 
+.navbar-menu-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+  margin-left: auto;
+}
+
+.nav-primary {
+  align-items: center;
+}
+
+.nav-social {
+  gap: 14px;
+}
+
 .navbar-nav > li > a {
   display: inline-flex;
   align-items: center;
@@ -105,7 +121,98 @@ iframe {
   font-weight: 400;
   height: 85px;
   line-height: 85px;
+  text-decoration: none !important;
   text-transform: uppercase;
+}
+
+.navbar-nav > li.selected > a,
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:visited,
+.navbar-nav > li > a:active {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  gap: 6px;
+}
+
+.dropdown > a .fa-angle-down {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 0;
+  min-width: 280px;
+  padding: 10px 0;
+  margin: 0;
+  list-style: none;
+  background: rgba(0, 0, 0, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.4);
+  z-index: 30;
+}
+
+.dropdown:hover > .sub-menu,
+.dropdown:focus-within > .sub-menu {
+  display: block;
+}
+
+.sub-menu > li > a {
+  display: block;
+  height: auto;
+  line-height: 1.45;
+  padding: 10px 18px;
+  text-transform: none;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.sub-menu > li > a:hover,
+.sub-menu > li > a:visited,
+.sub-menu > li > a:active {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.nav-social > li > a {
+  font-size: 18px;
+  width: 32px;
+  justify-content: center;
+  padding: 0;
+}
+
+.nav-social .social-link {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.nav-social .social-link:hover,
+.nav-social .social-link:visited,
+.nav-social .social-link:active {
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .site-main {
@@ -583,11 +690,47 @@ iframe {
 }
 
 @media (max-width: 991px) {
+  .site-header-row {
+    align-items: flex-start;
+  }
+
+  .navbar-menu-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-left: 0;
+  }
+
+  .nav-social {
+    flex-wrap: wrap;
+  }
+
   .navbar-nav > li > a {
     font-size: 16px;
     height: auto;
     line-height: 1.4;
     padding: 8px 0;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  .sub-menu {
+    display: block;
+    position: static;
+    min-width: 0;
+    padding: 0 0 0 16px;
+    margin-top: -2px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .sub-menu > li > a {
+    padding: 6px 0;
   }
 
   .about-grid {

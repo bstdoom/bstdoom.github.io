@@ -9,3 +9,4 @@ export:
 # serve the exported site on port 9358
 static:
     php -S localhost:9358 -t site/.kobweb/site
+

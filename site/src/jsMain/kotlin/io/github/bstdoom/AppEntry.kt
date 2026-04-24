@@ -22,6 +22,13 @@ fun initStyles(ctx: InitSilkContext) {
 fun AppEntry(content: @Composable () -> Unit) {
     LaunchedEffect(Unit) {
         val head = document.head ?: return@LaunchedEffect
+        if (document.getElementById("bstdoom-font-awesome-css") == null) {
+            val link = document.createElement("link") as HTMLLinkElement
+            link.id = "bstdoom-font-awesome-css"
+            link.rel = "stylesheet"
+            link.href = "/css/font-awesome.min.css"
+            head.appendChild(link)
+        }
         if (document.getElementById("bstdoom-theme-css") == null) {
             val link = document.createElement("link") as HTMLLinkElement
             link.id = "bstdoom-theme-css"
