@@ -46,6 +46,11 @@ private val socialNavLinks = listOf(
         "Bandcamp",
         iconClasses = listOf("fa", "fa-bandcamp"),
     ),
+    NavLink(
+        "https://github.com/bstdoom/bstdoom.github.io",
+        "GitHub",
+        iconClasses = listOf("fa", "fa-github"),
+    ),
 )
 
 private val mainNavLinks = listOf(

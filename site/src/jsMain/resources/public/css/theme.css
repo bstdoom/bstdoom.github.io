@@ -9,7 +9,7 @@ body.theme-body {
   margin: 0;
   font-family: "Dosis", sans-serif;
   background-color: #000;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.94)), url("/assets/background/bg1.png");
+  background-image: url("/assets/background/bg1.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -319,49 +319,120 @@ iframe {
 }
 
 .perfomer-wrapper {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
   overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.single-performer {
+  aspect-ratio: 3 / 4;
 }
 
 .single-performer-image {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
   object-fit: cover;
+  filter: grayscale(100%);
+  transform: scale(1);
+  transition: transform 300ms ease, filter 300ms ease;
 }
 
-.single-performer-copy {
-  padding: 18px;
+.perfomer-wrapper:hover .single-performer-image,
+.perfomer-wrapper:focus-within .single-performer-image {
+  filter: grayscale(100%) brightness(0.85);
+  transform: scale(1.04);
 }
 
-.single-performer-copy h3 {
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  background: rgba(122, 32, 145, 0.9);
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.perfomer-wrapper:hover .overlay,
+.perfomer-wrapper:focus-within .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overley-content {
+  width: 100%;
+  padding: 24px;
+}
+
+.overlay h3 {
   margin: 0;
-  font-size: 22px;
   color: #fff;
+  font-size: 24px;
+  font-weight: 600;
 }
 
-.performer-role {
-  display: block;
-  margin-top: 6px;
-  font-size: 16px;
-  color: #909090;
+.overlay h4 {
+  margin: 6px 0 18px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  font-weight: 300;
 }
 
-.single-performer-copy p {
-  margin: 14px 0 0;
-  line-height: 1.55;
+.overlay p {
+  margin: 0;
+  color: #fff;
+  line-height: 1.6;
 }
 
-.links-groups {
-  display: grid;
-  gap: 24px;
+.social-icons {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none !important;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.social-icons a:hover,
+.social-icons a:visited,
+.social-icons a:active {
+  color: #fff;
+  text-decoration: none !important;
 }
 
 .links-group-title {
   margin: 0 0 12px;
   font-size: 24px;
   color: #fff;
+}
+
+.links-carousel {
+  display: grid;
+  gap: 16px;
+}
+
+.links-carousel-viewport {
+  overflow: hidden;
+}
+
+.links-carousel-track {
+  display: flex;
+  align-items: stretch;
+  transition: transform 420ms ease;
+  will-change: transform;
+}
+
+.links-carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
 }
 
 .links-grid {
@@ -373,6 +444,48 @@ iframe {
 .links-item {
   color: #e0e0e0;
   line-height: 1.5;
+}
+
+.links-carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.links-carousel-control {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.links-carousel-control:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.links-carousel-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.links-carousel-dot {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: #d0d0d0;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.links-carousel-dot.selected {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 .music-page-intro {
@@ -774,9 +887,12 @@ iframe {
   }
 
   .performers-grid,
-  .links-grid,
   .footer-grid,
   .release-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .links-grid {
     grid-template-columns: 1fr;
   }
 

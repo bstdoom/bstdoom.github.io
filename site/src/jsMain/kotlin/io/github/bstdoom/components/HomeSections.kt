@@ -1,14 +1,22 @@
 package io.github.bstdoom.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import kotlinx.coroutines.delay
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Br
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H1
 import org.jetbrains.compose.web.dom.H2
 import org.jetbrains.compose.web.dom.H3
+import org.jetbrains.compose.web.dom.H4
 import org.jetbrains.compose.web.dom.Img
 import org.jetbrains.compose.web.dom.Li
+import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Section
 import org.jetbrains.compose.web.dom.Span
@@ -132,7 +140,7 @@ fun BandSection(members: List<BandMember>) {
     ) {
         Div(attrs = { classes("performers-grid") }) {
             members.forEach { member ->
-                Div(attrs = { classes("perfomer-wrapper") }) {
+                Div(attrs = { classes("perfomer-wrapper", "single-performer") }) {
                     Img(
                         src = member.image,
                         attrs = {
@@ -140,28 +148,30 @@ fun BandSection(members: List<BandMember>) {
                             classes("single-performer-image")
                         }
                     )
-                    Div(attrs = { classes("single-performer-copy") }) {
-                        H3 {
-                            Text(member.name)
-                        }
-                        Span(attrs = { classes("performer-role") }) {
-                            Text(member.role)
-                        }
-                        P {
-                            Text(member.info)
-                        }
-                        if (member.socialLinks.isNotEmpty()) {
-                            Div(attrs = { classes("social-icons") }) {
-                                member.socialLinks.forEach { social ->
-                                    A(
-                                        href = social.href,
-                                        attrs = {
-                                            attr("target", "_blank")
-                                            attr("rel", "noopener noreferrer")
-                                            attr("aria-label", social.label)
+                    Div(attrs = { classes("overlay") }) {
+                        Div(attrs = { classes("overley-content") }) {
+                            H3 {
+                                Text(member.name)
+                            }
+                            H4(attrs = { classes("performer-role") }) {
+                                Text(member.role)
+                            }
+                            P {
+                                Text(member.info)
+                            }
+                            if (member.socialLinks.isNotEmpty()) {
+                                Div(attrs = { classes("social-icons") }) {
+                                    member.socialLinks.forEach { social ->
+                                        A(
+                                            href = social.href,
+                                            attrs = {
+                                                attr("target", "_blank")
+                                                attr("rel", "noopener noreferrer")
+                                                attr("aria-label", social.label)
+                                            }
+                                        ) {
+                                            org.jetbrains.compose.web.dom.I(attrs = { classes(*social.iconClasses.toTypedArray()) })
                                         }
-                                    ) {
-                                        org.jetbrains.compose.web.dom.I(attrs = { classes(*social.iconClasses.toTypedArray()) })
                                     }
                                 }
                             }
@@ -175,29 +185,92 @@ fun BandSection(members: List<BandMember>) {
 
 @Composable
 fun LinksSection(groups: List<LinkGroup>) {
+    var activeIndex by remember(groups) { mutableIntStateOf(0) }
+
+    LaunchedEffect(groups) {
+        if (groups.size > 1) {
+            while (true) {
+                delay(12000)
+                activeIndex = (activeIndex + 1) % groups.size
+            }
+        }
+    }
+
     HomePanelSection(
         title = {
             Text("Freunde & ")
             Emphasis("Links")
         }
     ) {
-        Div(attrs = { classes("links-groups") }) {
-            groups.forEach { group ->
-                Div {
-                    H3(attrs = { classes("links-group-title") }) {
-                        Text(group.title)
+        Div(attrs = { classes("links-carousel") }) {
+            Div(attrs = { classes("links-carousel-viewport") }) {
+                Div(
+                    attrs = {
+                        classes("links-carousel-track")
+                        style {
+                            property("transform", "translateX(-${activeIndex * 100}%)")
+                        }
                     }
-                    Div(attrs = { classes("links-grid") }) {
-                        group.items.forEach { item ->
-                            A(
-                                href = item.href,
-                                attrs = { classes("links-item") }
-                            ) {
-                                Emphasis(item.label)
-                                item.location?.let {
-                                    Text(" ($it)")
+                ) {
+                    groups.forEach { group ->
+                        Div(attrs = { classes("links-carousel-slide") }) {
+                            H3(attrs = { classes("links-group-title") }) {
+                                Text(group.title)
+                            }
+                            Div(attrs = { classes("links-grid") }) {
+                                group.items.forEach { item ->
+                                    A(
+                                        href = item.href,
+                                        attrs = { classes("links-item") }
+                                    ) {
+                                        Emphasis(item.label)
+                                        item.location?.let {
+                                            Text(" ($it)")
+                                        }
+                                    }
                                 }
                             }
+                        }
+                    }
+                }
+            }
+            if (groups.size > 1) {
+                Div(attrs = { classes("links-carousel-controls") }) {
+                    Button(
+                        attrs = {
+                            classes("links-carousel-control")
+                            attr("type", "button")
+                            attr("aria-label", "Previous section")
+                            onClick { activeIndex = (activeIndex - 1 + groups.size) % groups.size }
+                        }
+                    ) {
+                        Text("‹")
+                    }
+                    Button(
+                        attrs = {
+                            classes("links-carousel-control")
+                            attr("type", "button")
+                            attr("aria-label", "Next section")
+                            onClick { activeIndex = (activeIndex + 1) % groups.size }
+                        }
+                    ) {
+                        Text("›")
+                    }
+                }
+                Div(attrs = { classes("links-carousel-dots") }) {
+                    groups.forEachIndexed { index, group ->
+                        Button(
+                            attrs = {
+                                classes("links-carousel-dot")
+                                if (index == activeIndex) {
+                                    classes("selected")
+                                }
+                                attr("type", "button")
+                                attr("aria-label", "Show ${group.title}")
+                                onClick { activeIndex = index }
+                            }
+                        ) {
+                            Text(group.title)
                         }
                     }
                 }
