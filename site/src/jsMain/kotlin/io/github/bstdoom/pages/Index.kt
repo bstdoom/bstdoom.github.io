@@ -4,25 +4,18 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
 import io.github.bstdoom.components.AboutSection
 import io.github.bstdoom.components.BandMember
-import io.github.bstdoom.components.BandSocialLink
 import io.github.bstdoom.components.BandSection
+import io.github.bstdoom.components.BandSocialLink
 import io.github.bstdoom.components.HomeHeroSection
 import io.github.bstdoom.components.LinkGroup
 import io.github.bstdoom.components.LinkItem
 import io.github.bstdoom.components.LinksSection
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.SiteScaffold
 
 @Page
 @Composable
 fun HomePage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         HomeHeroSection()
         AboutSection()
         BandSection(
@@ -60,31 +53,25 @@ fun HomePage() {
                 LinkGroup(
                     title = "Bands",
                     items = listOf(
-                        LinkItem("Ophis", "http://www.ophisdoom.de/", "Hamburg"),
                         LinkItem("Rage of Samedi", "https://www.facebook.com/RageOfSamedi/?fref=ts"),
-                        LinkItem("zqkgdz", "http://www.zqkmgdz.de/", "Lübeck"),
                         LinkItem("Apostle of Solitude", "http://apostleofsolitude.com/", "Indiana/US"),
                         LinkItem("Swamp Corpse", "http://swamp-corpse.com/", "Hamburg"),
                         LinkItem("Mayfair", "http://www.mayfairbrigade.com/"),
                         LinkItem("Crimson Swan", "http://www.crimsonswan.de/", "Hamburg"),
                         LinkItem("Opium Divan", "https://www.facebook.com/opiumdivan", "Paderborn"),
                         LinkItem("Dust", "http://www.dust-doom.de", "Bielefeld"),
-                        LinkItem("Bleeding", "http://bleeding1.bandcamp.com/releases", "Stade"),
                         LinkItem("The Giant's Vault", "https://www.facebook.com/The-Giants-Vault-1033417690033062/?fref=ts"),
                         LinkItem("The Hidden Spirit", "http://thehiddenspirit.de", "Hamburg"),
-                        LinkItem("The Great Realities of Tomorrow", "http://www.thegreatrealities.band/", "Hamburg"),
                         LinkItem("Shakhtyor", "https://www.facebook.com/shakhtyorband", "Hamburg"),
                     )
                 ),
                 LinkGroup(
                     title = "Produktion",
                     items = listOf(
-                        LinkItem("Voodoo Chamber Records", "http://www.voodoo-chamber-records.com"),
                         LinkItem("RosenQuarz Tonstudio", "http://www.rosenquarz-tonstudio.de"),
                         LinkItem("Pink Tank Records", "https://www.pink-tank-records.de"),
                         LinkItem("Musikbunker Hamburg", "http://musikbunker-hamburg.de/"),
                         LinkItem("KS Musik (Presswerk)", "http://ks-musik.de/"),
-                        LinkItem("Pallas Group (Presswerk)", "http://www.pallas-group.de/schallplatte/"),
                     )
                 ),
                 LinkGroup(
@@ -92,9 +79,7 @@ fun HomePage() {
                     items = listOf(
                         LinkItem("band@b-s-t.net", "mailto:band@b-s-t.net"),
                         LinkItem("Bandcamp", "http://bstdoom.bandcamp.com/"),
-                        LinkItem("Bandnet", "http://www.bandnet.de/band/bst"),
                         LinkItem("Facebook (official)", "http://facebook.com/hamburgcitydoom"),
-                        LinkItem("twitter", "http://twitter.com/bstdoom"),
                         LinkItem("last.fm", "http://www.lastfm.de/music/B.S.T."),
                         LinkItem("metal-archives", "http://www.metal-archives.com/bands/B.S.T./3540310143"),
                     )

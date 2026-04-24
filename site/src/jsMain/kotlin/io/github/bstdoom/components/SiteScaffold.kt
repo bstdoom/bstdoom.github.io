@@ -37,7 +37,7 @@ private val socialNavLinks = listOf(
         iconClasses = listOf("fa", "fa-facebook"),
     ),
     NavLink(
-        "https://www.youtube.com/channel/UCZcM2xHbSAL9o1HiJu8ZO1g",
+        "https://www.youtube.com/@bstdoom",
         "YouTube",
         iconClasses = listOf("fa", "fa-youtube"),
     ),
@@ -48,13 +48,18 @@ private val socialNavLinks = listOf(
     ),
 )
 
+private val mainNavLinks = listOf(
+    NavLink("/", "Home"),
+    NavLink("/musik/", "Musik"),
+    NavLink("/info/", "Info"),
+    NavLink("/english/", "en"),
+)
+
 @Composable
-fun SiteScaffold(
-    navLinks: List<NavLink>,
-    content: @Composable () -> Unit,
-) {
+fun SiteScaffold(content: @Composable () -> Unit) {
     val currentPath = window.location.pathname
-    val renderedLinks = navLinks.map { link ->
+    val currentYear = kotlin.js.Date().getFullYear().toInt()
+    val renderedLinks = mainNavLinks.map { link ->
         when (link.label) {
             "Musik" -> link.copy(children = musicNavChildren)
             "Info" -> link.copy(children = infoNavChildren)
@@ -110,7 +115,7 @@ fun SiteScaffold(
 
         Footer(attrs = { classes("site-container", "site-footer") }) {
             Div(attrs = { classes("footer", "text-center") }) {
-                Text("copyright © 2016-2024 B.S.T. All Rights Reserved.")
+                Text("copyright © 2016-$currentYear B.S.T. All Rights Reserved.")
                 org.jetbrains.compose.web.dom.Br()
                 Text("designed by ")
                 A(href = "http://www.themeum.com/") {

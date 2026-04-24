@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.musik.hamburg_city_doom
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.ReleaseDetailLayout
 import io.github.bstdoom.components.ReleaseLyricsSection
 import io.github.bstdoom.components.ReviewQuote
@@ -14,13 +13,7 @@ import io.github.bstdoom.components.TracksWidget
 @Page
 @Composable
 fun HamburgCityDoomPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         ReleaseDetailLayout(
             title = "Hamburg City Doom",
             coverImage = "/assets/releases/hamburg_city_doom_detail.jpg",

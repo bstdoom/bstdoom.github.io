@@ -45,13 +45,10 @@ fun HomeHeroSection() {
     Section(attrs = { id("home") }) {
         Div(attrs = { classes("hero-copy") }) {
             Div(attrs = { classes("home-kicker") }) {
-                Text("14.02 - Nürnberg - Z-Bau")
+                Text("In Neuformierung - Mund abputzen und weiter")
             }
             H1 {
                 Text("B.S.T. - Hamburg City Doom")
-            }
-            P(attrs = { classes("hero-copy-text") }) {
-                Text("Hamburg City Doom since 1994. Traditional doom from Hamburg, with German lyrics and a slow, crushing pulse.")
             }
         }
     }

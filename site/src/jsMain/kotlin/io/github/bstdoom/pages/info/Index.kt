@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
 import io.github.bstdoom.components.DownloadItem
 import io.github.bstdoom.components.DownloadsWidget
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.SiteScaffold
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.H2
@@ -17,13 +16,7 @@ import org.jetbrains.compose.web.dom.Text
 @Page
 @Composable
 fun InfoPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         Section(attrs = { classes("info-page", "release-detail-page") }) {
             Div(attrs = { classes("release-detail-grid") }) {
                 Div(attrs = { classes("release-main-column") }) {

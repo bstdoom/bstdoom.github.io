@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.musik
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.SiteScaffold
 import org.jetbrains.compose.web.dom.A
 import org.jetbrains.compose.web.dom.Div
@@ -23,13 +22,7 @@ private data class ReleaseCard(
 @Page
 @Composable
 fun MusikPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         Section(attrs = { classes("bg", "site-panel", "music-page-intro") }) {
             H2(attrs = { classes("heading") }) {
                 Text("Musik")

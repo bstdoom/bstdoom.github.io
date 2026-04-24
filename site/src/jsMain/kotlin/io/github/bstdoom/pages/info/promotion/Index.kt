@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.info.promotion
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.SiteScaffold
 import io.github.bstdoom.components.StaticListSection
 import io.github.bstdoom.components.StaticPageLayout
@@ -11,13 +10,7 @@ import io.github.bstdoom.components.StaticTextSection
 @Page
 @Composable
 fun PromotionPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         StaticPageLayout(title = "Promotion") {
             StaticTextSection(
                 title = "Promo (deutsch)",

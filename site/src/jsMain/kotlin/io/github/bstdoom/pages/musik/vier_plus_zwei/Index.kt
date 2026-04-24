@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.musik.vier_plus_zwei
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.ReleaseDetailLayout
 import io.github.bstdoom.components.ReleaseLyricsSection
 import io.github.bstdoom.components.SiteScaffold
@@ -12,13 +11,7 @@ import io.github.bstdoom.components.TracksWidget
 @Page
 @Composable
 fun VierPlusZweiPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         ReleaseDetailLayout(
             title = "Vier + 2",
             coverImage = "/assets/releases/vier_plus_zwei_detail.jpg",

@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.musik.herbst
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.ReleaseDetailLayout
 import io.github.bstdoom.components.ReleaseFactsList
 import io.github.bstdoom.components.ReleaseLyricsSection
@@ -17,13 +16,7 @@ import io.github.bstdoom.components.TracksWidget
 @Page
 @Composable
 fun HerbstPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         ReleaseDetailLayout(
             title = "Herbst",
             coverImage = "/assets/releases/herbst.jpg",

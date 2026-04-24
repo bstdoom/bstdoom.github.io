@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.musik.die_illusion
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.ReleaseDetailLayout
 import io.github.bstdoom.components.ReleaseLyricsSection
 import io.github.bstdoom.components.ReviewQuote
@@ -15,13 +14,7 @@ import io.github.bstdoom.components.TracksWidget
 @Page
 @Composable
 fun DieIllusionPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         ReleaseDetailLayout(
             title = "Die Illusion",
             coverImage = "/assets/releases/die_illusion_detail.jpg",

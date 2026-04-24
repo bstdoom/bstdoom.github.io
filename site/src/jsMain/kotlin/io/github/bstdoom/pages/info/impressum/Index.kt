@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.info.impressum
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.SiteScaffold
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Em
@@ -19,13 +18,7 @@ import org.jetbrains.compose.web.dom.Ul
 @Page
 @Composable
 fun ImpressumPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         Section(attrs = { classes("release-detail-page") }) {
             Div(attrs = { classes("release-detail-grid") }) {
                 Div(attrs = { classes("release-main-column") }) {

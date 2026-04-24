@@ -2,7 +2,6 @@ package io.github.bstdoom.pages.musik.unter_deck
 
 import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import io.github.bstdoom.components.NavLink
 import io.github.bstdoom.components.ReleaseDetailLayout
 import io.github.bstdoom.components.ReleaseLyricsSection
 import io.github.bstdoom.components.ReviewQuote
@@ -16,13 +15,7 @@ import io.github.bstdoom.components.TracksWidget
 @Page
 @Composable
 fun UnterDeckPage() {
-    SiteScaffold(
-        navLinks = listOf(
-            NavLink("/", "Home"),
-            NavLink("/musik/", "Musik"),
-            NavLink("/info/", "Info"),
-        )
-    ) {
+    SiteScaffold {
         ReleaseDetailLayout(
             title = "Unter Deck",
             coverImage = "/assets/releases/unter_deck_detail.jpg",
