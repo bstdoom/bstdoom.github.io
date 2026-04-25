@@ -46,11 +46,6 @@ private val socialNavLinks = listOf(
         "Bandcamp",
         iconClasses = listOf("fa", "fa-bandcamp"),
     ),
-    NavLink(
-        "https://github.com/bstdoom/bstdoom.github.io",
-        "GitHub",
-        iconClasses = listOf("fa", "fa-github"),
-    ),
 )
 
 private val mainNavLinks = listOf(
@@ -63,7 +58,6 @@ private val mainNavLinks = listOf(
 @Composable
 fun SiteScaffold(content: @Composable () -> Unit) {
     val currentPath = window.location.pathname
-    val currentYear = kotlin.js.Date().getFullYear().toInt()
     val renderedLinks = mainNavLinks.map { link ->
         when (link.label) {
             "Musik" -> link.copy(children = musicNavChildren)
@@ -119,26 +113,44 @@ fun SiteScaffold(content: @Composable () -> Unit) {
         }
 
         Footer(attrs = { classes("site-container", "site-footer") }) {
-            Div(attrs = { classes("footer", "text-center") }) {
-                Text("copyright © 2016-$currentYear B.S.T. All Rights Reserved.")
-                org.jetbrains.compose.web.dom.Br()
-                Text("designed by ")
-                A(href = "http://www.themeum.com/") {
-                    Text("themeum")
+            Div(attrs = { classes("footer") }) {
+                Div(attrs = { classes("footer-left") }) {
+                    A(
+                        href = "https://github.com/bstdoom/bstdoom.github.io",
+                        attrs = {
+                            classes("footer-social-link")
+                            attr("target", "_blank")
+                            attr("rel", "noopener noreferrer")
+                            attr("aria-label", "GitHub repository")
+                        }
+                    ) {
+                        I(attrs = { classes("fa", "fa-github") })
+                    }
+                    Span(attrs = { classes("footer-copy") }) {
+                        Text("powered by ")
+                        A(href = "https://kobweb.varabyte.com/") {
+                            Text("Kobweb")
+                        }
+                        Text(" and ")
+                        A(
+                            href = "https://github.com/bstdoom/bstdoom.github.io",
+                            attrs = {
+                                attr("target", "_blank")
+                                attr("rel", "noopener noreferrer")
+                            }
+                        ) {
+                            Text("GitHub")
+                        }
+                    }
                 }
-                Text(" - ")
-                A(href = "http://getgrav.org") {
-                    Text("Grav")
+                Div(attrs = { classes("footer-right") }) {
+                    Span(attrs = { classes("footer-copy") }) {
+                        Text("vocal theme by ")
+                        A(href = "http://www.themeum.com/") {
+                            Text("Themeum")
+                        }
+                    }
                 }
-                Text(" was ")
-                I(attrs = { classes("fa", "fa-code") })
-                Text(" with ")
-                I(attrs = { classes("fa", "fa-heart") })
-                Text(" by ")
-                A(href = "http://www.rockettheme.com") {
-                    Text("RocketTheme")
-                }
-                Text(".")
             }
         }
     }

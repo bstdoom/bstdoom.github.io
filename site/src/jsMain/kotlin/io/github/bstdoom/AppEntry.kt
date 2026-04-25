@@ -24,6 +24,14 @@ fun AppEntry(content: @Composable () -> Unit) {
     DisposableEffect(Unit) {
         val head = document.head
         if (head != null) {
+            if (document.getElementById("bstdoom-favicon") == null) {
+                val link = document.createElement("link") as HTMLLinkElement
+                link.id = "bstdoom-favicon"
+                link.rel = "icon"
+                link.type = "image/x-icon"
+                link.href = "/favicon.ico"
+                head.appendChild(link)
+            }
             if (document.getElementById("bstdoom-font-awesome-css") == null) {
                 val link = document.createElement("link") as HTMLLinkElement
                 link.id = "bstdoom-font-awesome-css"
