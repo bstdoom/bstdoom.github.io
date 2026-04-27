@@ -29,5 +29,7 @@ gradle.settingsEvaluated {
 
 rootProject.name = "bstdoom"
 
+includeBuild("gradle/build-logic")
+
 include(":site")
 include(":worker")

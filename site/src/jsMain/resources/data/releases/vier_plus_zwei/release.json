@@ -1,0 +1,24 @@
+{
+  "title": "Vier + 2",
+  "coverImage": "/assets/releases/vier_plus_zwei_detail.jpg",
+  "coverAlt": "Vier + 2 Cover",
+  "releaseType": "demo",
+  "year": 2000,
+  "showInNavigation": false,
+  "facts": [
+    "Release: 2000"
+  ],
+  "tracks": [
+    { "name": "Wolf", "time": "06:51" },
+    { "name": "Ich", "time": "04:36" },
+    { "name": "Leuchtturm", "time": "03:44" },
+    { "name": "Faust", "time": "06:43" },
+    { "name": "B.S.T.", "time": "04:23" },
+    { "name": "Bikini Fieber", "time": "02:36" }
+  ],
+  "bandcampPlayerUrl": "https://bandcamp.com/EmbeddedPlayer/v=2/album=2272982390/size=large/bgcol=0d0d0d/linkcol=f1f1f1/tracklist=true/artwork=small/transparent=true/",
+  "spotifyEmbedUrl": null,
+  "bandcampUrl": "https://bstdoom.bandcamp.com/album/vierpluszwei",
+  "actionLinks": [],
+  "reviews": []
+}

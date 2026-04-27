@@ -1,0 +1,83 @@
+{
+  "title": "Herbst",
+  "coverImage": "/assets/releases/herbst.jpg",
+  "coverAlt": "Herbst Cover",
+  "releaseType": "fullLength",
+  "year": 2022,
+  "showInNavigation": true,
+  "facts": [
+    "Recording: Rosenquarz Studio",
+    "Release: 2022",
+    "LP: Fucking Kill Records / Cause of Deaf Records"
+  ],
+  "tracks": [
+    { "name": "Nur ein Tag im Leben", "time": "11:32" },
+    { "name": "Kaltstart", "time": "11:48" },
+    { "name": "Der Tod kommt näher", "time": "04:34" },
+    { "name": "Was jetzt noch bleibt", "time": "08:01" },
+    { "name": "Der Mut", "time": "10:52" }
+  ],
+  "bandcampPlayerUrl": "https://bandcamp.com/EmbeddedPlayer/v=2/album=2641444744/size=large/bgcol=0d0d0d/linkcol=f1f1f1/tracklist=true/artwork=small/transparent=true/",
+  "spotifyEmbedUrl": "https://open.spotify.com/embed/album/1MkkXCYQAamIyeG2EmTAkV?utm_source=generator",
+  "itunesUrl": "https://music.apple.com/us/album/herbst/1646818002?uo=4",
+  "bandcampUrl": "https://bstdoom.bandcamp.com/album/herbst",
+  "bandcampVinylUrl": "https://fuckingkillrecords.bandcamp.com/album/b-s-t-herbst",
+  "actionLinks": [
+    {
+      "label": "YouTube",
+      "href": "https://www.youtube.com/playlist?list=OLAK5uy_mzPVrCfNZqB5J2mvxyIgpYAK--q7m0fvQ"
+    }
+  ],
+  "reviews": [
+    {
+      "source": "Deaf Forever 51 - (9,5/10)",
+      "url": "https://deaf-forever.de/",
+      "quote": "\"Herbst\" ist eine bittersüße Tour de Force der intensivsten Art. Für mich schlicht DAS Doom-Album des Jahres 2022. Punkt."
+    },
+    {
+      "source": "powermetal.de (10/10)",
+      "url": "https://www.powermetal.de/review/review-B_S_T_/Herbst,39497,39338.html",
+      "quote": "Es sind tatsächlich schon wieder fünf Jahre ins Land gestrichen seit die Hamburger Super-Doomer mit \"Unter Deck\" eines der innovativsten und emotionalsten Doom-Alben der Neuzeit auf die Menschheit abgefeuert hat. Mir bleibt nichts anderes übrig als erneut mit der Höchstnote zu wedeln und freue mich auf weitere Livedarbietungen dieser Ausnahmeband."
+    },
+    {
+      "source": "Chuck Brown, Apostle of Solitude",
+      "url": "https://www.facebook.com/apostleofsolitude",
+      "quote": "The new record is fucking great guys!"
+    },
+    {
+      "source": "reflections of darkness (9/10)",
+      "url": "https://www.reflectionsofdarkness.com/artists-a-e-cdreviews-131/22174-cd-review-b-s-t-herbst",
+      "quote": "B.S.T make music that is true to what Doom used to be: deep, dark and authentic sadness that is transported to the listener in such a raw and fragile despair that it actually makes your heart bleed."
+    },
+    {
+      "source": "zephyrs-odem.de (7,5/10)",
+      "url": "https://www.zephyrs-odem.de/reviews/detail/bst-herbst-2022-12240/",
+      "quote": "Das Album ist nix zum Feiern und Party machen. Die gute Laune kann man sich auch abschminken. Jedoch ist der Sound bestens geeignet, im Halbdunkel in einen Ohrensessel versenkt, das Glas Rotwein in der Hand, seinen düsteren Gedanken nachzuhängen."
+    },
+    {
+      "source": "Explosiv: Bandshirt der Woche",
+      "url": "https://youtu.be/8cBXrReZbEc?t=354",
+      "quote": "\"Nur ein Tag im Leben\", wenn Du da keine Gänsehaut kriegst, dann würde ich mir aber Sorgen machen, ob mein Gefühls-System noch irgendwie funktioniert."
+    },
+    {
+      "source": "saitenkult.de (9/10)",
+      "url": "https://www.saitenkult.de/2022/10/14/b-s-t-herbst/",
+      "quote": "Wenn dieser ´Herbst´ beginnt, dann hat sich die fünfjährige Wartezeit seit ´Unter Deck´ gelohnt."
+    },
+    {
+      "source": "vampster.com",
+      "url": "https://vampster.com/cd-reviews/b-s-t-herbst/",
+      "quote": "Für Doomer und Freunde trauriger Klänge ist „Herbst“ Pflichtprogramm"
+    },
+    {
+      "source": "cause of deaf - podcast",
+      "url": "https://linktr.ee/Causeofdeaf",
+      "quote": "Für jeden Doom-Fan: Reinhören, gut finden, mehr Doom kriegt ihr nicht!"
+    },
+    {
+      "source": "metal.de 8.0/10",
+      "url": "https://www.metal.de/reviews/b-s-t-herbst-474444/",
+      "quote": "Mit „Herbst“ liefert die Hamburger Doom-Institution B.S.T. ihr drittes Album ab. Wer die Band kennt, weiß, dass es erneut wieder Wehmut und Trostlosigkeit in Schleife gibt."
+    }
+  ]
+}

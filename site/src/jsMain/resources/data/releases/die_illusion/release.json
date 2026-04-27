@@ -1,0 +1,57 @@
+{
+  "title": "Die Illusion",
+  "coverImage": "/assets/releases/die_illusion_detail.jpg",
+  "coverAlt": "Die Illusion Cover",
+  "releaseType": "fullLength",
+  "year": 2013,
+  "showInNavigation": true,
+  "facts": [
+    "Recording: Rosenquarz Studio",
+    "Release: 2013"
+  ],
+  "tracks": [
+    { "name": "Die Illusion", "time": "07:29" },
+    { "name": "Die Moral", "time": "08:57" },
+    { "name": "Die Lüge", "time": "07:05" },
+    { "name": "Die Bilder", "time": "07:46" },
+    { "name": "Die Nacht", "time": "05:37" },
+    { "name": "Die Hoffnung", "time": "09:41" }
+  ],
+  "bandcampPlayerUrl": "https://bandcamp.com/EmbeddedPlayer/v=2/album=3028144828/size=large/bgcol=0d0d0d/linkcol=f1f1f1/tracklist=true/artwork=small/transparent=true/",
+  "spotifyEmbedUrl": "https://open.spotify.com/embed/album/3bgPe0umYuNjeH4WCdokgb",
+  "itunesUrl": "https://music.apple.com/us/album/die-illusion/995048467?uo=4",
+  "bandcampUrl": "https://bstdoom.bandcamp.com/album/die-illusion",
+  "actionLinks": [],
+  "reviews": [
+    {
+      "source": "Deaf Forever, Götz Kühnemund",
+      "url": "http://www.deaf-forever.de/",
+      "quote": "'Die Illusion' darf trotz seines Alters nicht übergangen werden. Crowbar-artiger Doom mit guten deutschen Texten ist schließlich nichts Alltägliches."
+    },
+    {
+      "source": "Legacy, Juli 2013 (11/15)",
+      "url": "http://www.legacy.de",
+      "quote": "Die Hamburger haben sich zu einer ernstzunehmenden Formation mit vielen Alleinstellungsmerkmalen entwickelt."
+    },
+    {
+      "source": "Sacred Metal, Michael Kohsiek",
+      "url": "http://sacredsacredmetal.blogspot.de/2014/02/bst-die-illusion.html",
+      "quote": "Exzellente Gitarrenmelodien, greifbare Melancholie und erfreulich kitschfreie Texte machen 'Die Illusion' zu einem richtig guten Doomalbum aus Deutschland."
+    },
+    {
+      "source": "allover-ffm-rock.de, Michael Toscher (8/10)",
+      "url": "http://allover-ffm-rock.de/reviews-interviews/cd-reviews/20477-b-s-t-die-illusion",
+      "quote": "Ein anspruchsvolles Werk mit tiefgründigem Hintergrund, das unverblümt aus dem Leben erzählt."
+    },
+    {
+      "source": "streetclip.tv, Michael Haifl (9/10)",
+      "url": "http://www.streetclip.tv/magazine/details/reviews/article/b-s-t-die-illusion/",
+      "quote": "Hart, düster und zugleich himmelhochjauchzend. B.S.T. liefern deutschen Doom mit erstaunlicher Wirkung."
+    },
+    {
+      "source": "laut.de (4/5)",
+      "url": "http://www.laut.de/B.S.T./Die-Illusion-(Album)",
+      "quote": "So unkonventionell die Idee, so im besten Sinne routiniert klingt ihr Longplay-Debüt. Genre-Fans sollten ein Ohr riskieren."
+    }
+  ]
+}

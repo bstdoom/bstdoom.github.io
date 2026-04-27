@@ -608,7 +608,7 @@ iframe {
 }
 
 .widget {
-  margin-top: 0;
+  margin-top: 25px;
   margin-bottom: 24px;
 }
 
@@ -649,6 +649,56 @@ iframe {
 
 .track-action-link a {
   color: #fff;
+}
+
+.release-buy-listen-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.release-buy-listen-player {
+  padding: 4px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.release-buy-listen-iframe {
+  display: block;
+  border: 0;
+  border-radius: 8px;
+  background: #0d0d0d;
+}
+
+.release-buy-listen-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  text-decoration: none !important;
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.release-buy-listen-link:hover,
+.release-buy-listen-link:focus {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.release-buy-listen-link .fa {
+  font-size: 18px;
+  line-height: 1;
 }
 
 .spotify-embed {
@@ -754,6 +804,11 @@ iframe {
 }
 
 .sidebar-inner {
+  display: grid;
+  gap: 0;
+}
+
+.release-main-column {
   display: grid;
   gap: 0;
 }

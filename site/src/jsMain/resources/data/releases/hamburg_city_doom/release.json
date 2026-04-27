@@ -1,0 +1,46 @@
+{
+  "title": "Hamburg City Doom",
+  "coverImage": "/assets/releases/hamburg_city_doom_detail.jpg",
+  "coverAlt": "Hamburg City Doom Cover",
+  "releaseType": "ep",
+  "year": 2009,
+  "showInNavigation": true,
+  "facts": [
+    "Recording: Rosenquarz Studio",
+    "Release: 2009"
+  ],
+  "tracks": [
+    { "name": "Das Ziel", "time": "08:09" },
+    { "name": "Bastard", "time": "04:28" },
+    { "name": "Der Traum", "time": "06:08" }
+  ],
+  "bandcampPlayerUrl": "https://bandcamp.com/EmbeddedPlayer/v=2/album=1159496184/size=large/bgcol=0d0d0d/linkcol=f1f1f1/tracklist=true/artwork=small/transparent=true/",
+  "spotifyEmbedUrl": null,
+  "bandcampUrl": "https://bstdoom.bandcamp.com/album/hamburg-city-doom",
+  "actionLinks": [],
+  "reviews": [
+    {
+      "source": "Dark Heart (6/7)",
+      "url": "http://www.darkheartmagazin.de/rezi/bsta6001.htm",
+      "quote": "Deutschsprachige düstere Texte mischen sich mit harten Gitarrenriffs und skizzieren das Leben und seine Unwägbarkeiten."
+    },
+    {
+      "source": "amboss-mag.de",
+      "url": "http://www.amboss-mag.de/reviews/Archiv2/09/r10-09/bst.html",
+      "quote": "Doom Metal mit deutschen Texten? Jawoll, kann es. Eine geile Mischung von Crowbar und St. Vitus."
+    },
+    {
+      "source": "REVOLT",
+      "quote": "Schön fetter Sound, interessante Riffs, gut rübergebrachte Atmosphäre. Für ein Demo sehr professionell."
+    },
+    {
+      "source": "igelmetal.de (4/5)",
+      "quote": "Klagende deutschsprachige Texte prallen auf tonnenschwere, unglaublich mächtige Riffs."
+    },
+    {
+      "source": "squealer rocks",
+      "url": "http://www.squealer-rocks.de/neu_cdreview.php?var=2092",
+      "quote": "Doom Metal mit starker Core-Schlagseite und deutschen Texten eindrucksvoll in Szene gesetzt."
+    }
+  ]
+}

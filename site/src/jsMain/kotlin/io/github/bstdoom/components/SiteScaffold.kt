@@ -1,6 +1,7 @@
 package io.github.bstdoom.components
 
 import androidx.compose.runtime.Composable
+import io.github.bstdoom.components.releases.releaseNavChildren
 import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.*
 
@@ -9,13 +10,6 @@ data class NavLink(
   val label: String,
   val children: List<NavLink> = emptyList(),
   val iconClasses: List<String> = emptyList(),
-)
-
-private val musicNavChildren = listOf(
-  NavLink("/musik/hamburg-city-doom/", "Hamburg City Doom [EP] (2009)"),
-  NavLink("/musik/die-illusion/", "Die Illusion [LP,CD] (2013)"),
-  NavLink("/musik/unter-deck/", "Unter Deck [LP, CD] (2017)"),
-  NavLink("/musik/herbst/", "Herbst [LP,CD] (2022)"),
 )
 
 private val infoNavChildren = listOf(
@@ -52,7 +46,7 @@ fun SiteScaffold(content: @Composable () -> Unit) {
   val currentPath = window.location.pathname
   val renderedLinks = mainNavLinks.map { link ->
     when (link.label) {
-      "Musik" -> link.copy(children = musicNavChildren)
+      "Musik" -> link.copy(children = releaseNavChildren())
       "Info" -> link.copy(children = infoNavChildren)
       else -> link
     }

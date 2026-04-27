@@ -1,90 +1,48 @@
 package io.github.bstdoom.pages.musik
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import com.varabyte.kobweb.core.Page
 import io.github.bstdoom.components.SiteScaffold
+import io.github.bstdoom.components.releases.ReleaseIndexEntry
+import io.github.bstdoom.components.releases.ReleaseKind
+import io.github.bstdoom.components.releases.releaseIndexEntries
 import org.jetbrains.compose.web.dom.*
-
-private data class ReleaseCard(
-  val title: String,
-  val href: String,
-  val image: String,
-  val type: String,
-  val year: String,
-)
 
 @Page
 @Composable
 fun MusikPage() {
+  val releases = remember { releaseIndexEntries() }
+
   SiteScaffold {
     Section(attrs = { classes("bg", "site-panel", "music-page-intro") }) {
       H2(attrs = { classes("heading") }) {
         Text("Musik")
       }
-      P(attrs = { classes("music-intro-copy") }) {
+    P(attrs = { classes("music-intro-copy") }) {
         Text("Hier findest Du unsere Veröffentlichungen im Überblick.")
       }
     }
 
-    ReleaseGroup(
-      title = "Full Length",
-      releases = listOf(
-        ReleaseCard(
-          title = "Herbst",
-          href = "/musik/herbst/",
-          image = "/assets/releases/herbst.jpg",
-          type = "LP, CD",
-          year = "2022",
-        ),
-        ReleaseCard(
-          title = "Unter Deck",
-          href = "/musik/unter-deck/",
-          image = "/assets/releases/unter_deck.jpg",
-          type = "LP, CD",
-          year = "2017",
-        ),
-        ReleaseCard(
-          title = "Die Illusion",
-          href = "/musik/die-illusion/",
-          image = "/assets/releases/die_illusion.jpg",
-          type = "LP, CD",
-          year = "2013",
-        ),
-      )
-    )
+    ReleaseKind.entries.forEach { kind ->
+      val releasesForKind = releases
+        .filter { it.releaseType == kind }
+        .sortedByDescending { it.year }
 
-    ReleaseGroup(
-      title = "EP",
-      releases = listOf(
-        ReleaseCard(
-          title = "Hamburg City Doom",
-          href = "/musik/hamburg-city-doom/",
-          image = "/assets/releases/hamburg_city_doom.jpg",
-          type = "EP",
-          year = "2009",
-        ),
-      )
-    )
-
-    ReleaseGroup(
-      title = "Demo",
-      releases = listOf(
-        ReleaseCard(
-          title = "Vier + 2",
-          href = "/musik/vier-plus-zwei/",
-          image = "/assets/releases/vier_plus_zwei.jpg",
-          type = "Demo",
-          year = "2000",
-        ),
-      )
-    )
+      if (releasesForKind.isNotEmpty()) {
+        ReleaseGroup(
+          title = kind.sectionTitle,
+          releases = releasesForKind,
+        )
+      }
+    }
   }
 }
 
 @Composable
 private fun ReleaseGroup(
   title: String,
-  releases: List<ReleaseCard>,
+  releases: List<ReleaseIndexEntry>,
 ) {
   Section(attrs = { classes("bg", "site-panel") }) {
     H2(attrs = { classes("heading") }) {
@@ -92,9 +50,9 @@ private fun ReleaseGroup(
     }
     Div(attrs = { classes("release-grid") }) {
       releases.forEach { release ->
-        A(href = release.href, attrs = { classes("release-card") }) {
+        A(href = "/musik/${release.slug.replace('_', '-')}/", attrs = { classes("release-card") }) {
           Img(
-            src = release.image,
+            src = release.coverImage,
             attrs = {
               attr("alt", release.title)
               classes("release-cover")
@@ -105,7 +63,7 @@ private fun ReleaseGroup(
               Text(release.title)
             }
             Div(attrs = { classes("release-meta") }) {
-              Text("${release.type} (${release.year})")
+              Text("${release.releaseType.displayLabel} (${release.year})")
             }
           }
         }

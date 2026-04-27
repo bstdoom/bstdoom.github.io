@@ -1,6 +1,7 @@
 package io.github.bstdoom.components
 
 import androidx.compose.runtime.Composable
+import io.github.bstdoom.components.releases.SidebarWidget
 import org.jetbrains.compose.web.dom.*
 
 data class DownloadItem(
