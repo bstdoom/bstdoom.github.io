@@ -1,5 +1,6 @@
 ---
 layout: .components.layouts.ImpressumLayout
+routeOverride: /info/impressum/index
 sidebar:
   address:
     - B.S.T.

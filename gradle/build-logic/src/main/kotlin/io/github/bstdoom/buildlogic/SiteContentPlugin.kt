@@ -278,6 +278,7 @@ abstract class GenerateReleaseIndexSourceTask : DefaultTask() {
   }
 }
 
+
 private fun String.toConstantBase(): String {
   return replace(Regex("[^A-Za-z0-9]+"), "_")
     .replace(Regex("_+"), "_")

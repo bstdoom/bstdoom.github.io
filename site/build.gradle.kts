@@ -36,7 +36,6 @@ kobweb {
   }
 }
 
-
 rootProject.plugins.withType<YarnPlugin> {
   rootProject.extensions.getByType<YarnRootExtension>().lockFileDirectory = rootProject.file("gradle/kotlin-js-store")
 }

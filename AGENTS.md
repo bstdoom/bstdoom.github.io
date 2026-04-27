@@ -96,10 +96,10 @@ This structure should be reusable across all pages.
 - Reuse existing assets where possible
 - Avoid overengineering
 - consider all md files under `.agents/`
+- Keep `site/.kobweb/conf.yaml` checked in; see [`.agents/adr/0003-keep-kobweb-marker-file-checked-in.md`](/Users/jangalinski/IdeaProjects/bstdoom/bstdoom.github.io/.agents/adr/0003-keep-kobweb-marker-file-checked-in.md)
 
 ---
 
 ## Open Questions
 
 The agent should clarify unclear aspects before proceeding with major decisions.
-
