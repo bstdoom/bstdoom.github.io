@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Bands",
+    "items": [
+      { "label": "Rage of Samedi", "href": "https://www.facebook.com/RageOfSamedi/?fref=ts" },
+      { "label": "Apostle of Solitude", "href": "http://apostleofsolitude.com/", "location": "Indiana/US" },
+      { "label": "Swamp Corpse", "href": "http://swamp-corpse.com/", "location": "Hamburg" },
+      { "label": "Mayfair", "href": "http://www.mayfairbrigade.com/" },
+      { "label": "Crimson Swan", "href": "http://www.crimsonswan.de/", "location": "Hamburg" },
+      { "label": "Opium Divan", "href": "https://www.facebook.com/opiumdivan", "location": "Paderborn" },
+      { "label": "Dust", "href": "http://www.dust-doom.de", "location": "Bielefeld" },
+      { "label": "The Giant's Vault", "href": "https://www.facebook.com/The-Giants-Vault-1033417690033062/?fref=ts" },
+      { "label": "The Hidden Spirit", "href": "http://thehiddenspirit.de", "location": "Hamburg" },
+      { "label": "Shakhtyor", "href": "https://www.facebook.com/shakhtyorband", "location": "Hamburg" }
+    ]
+  },
+  {
+    "title": "Produktion",
+    "items": [
+      { "label": "RosenQuarz Tonstudio", "href": "http://www.rosenquarz-tonstudio.de" },
+      { "label": "Pink Tank Records", "href": "https://www.pink-tank-records.de" },
+      { "label": "Musikbunker Hamburg", "href": "http://musikbunker-hamburg.de/" },
+      { "label": "KS Musik (Presswerk)", "href": "http://ks-musik.de/" }
+    ]
+  },
+  {
+    "title": "Kontakt",
+    "items": [
+      { "label": "band@b-s-t.net", "href": "mailto:band@b-s-t.net" },
+      { "label": "Bandcamp", "href": "http://bstdoom.bandcamp.com/" },
+      { "label": "Facebook (official)", "href": "http://facebook.com/hamburgcitydoom" },
+      { "label": "last.fm", "href": "http://www.lastfm.de/music/B.S.T." },
+      { "label": "metal-archives", "href": "http://www.metal-archives.com/bands/B.S.T./3540310143" },
+      { "label": "band-zone", "href": "https://band.zone/band" }
+    ]
+  },
+  {
+    "title": "Magazine",
+    "items": [
+      { "label": "Deaf Forever", "href": "http://www.deaf-forever.de/" },
+      { "label": "Doom Metal Front", "href": "http://doommetalfront.blogspot.de/" },
+      { "label": "Legacy", "href": "http://www.legacy.de" },
+      { "label": "Neckbreaker", "href": "http://neckbreaker.de/" },
+      { "label": "Obliveon", "href": "http://www.obliveon.de/" },
+      { "label": "Powermetal", "href": "http://powermetal.de/" },
+      { "label": "Rock Hard", "href": "https://www.rockhard.de" },
+      { "label": "Sacredmetal", "href": "http://sacredsacredmetal.blogspot.de" },
+      { "label": "Undergrounded", "href": "http://www.undergrounded.de/" },
+      { "label": "Streetclip.tv", "href": "http://www.streetclip.tv/" }
+    ]
+  }
+]

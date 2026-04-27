@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Heiko W.",
+    "role": "Gitarre, Gesang",
+    "info": "Gründungsmitglied, Freizeit-Folker",
+    "image": "/assets/home/band-heiko.png",
+    "socialLinks": [
+      {
+        "href": "https://www.facebook.com/bst.band",
+        "type": "facebook"
+      }
+    ]
+  },
+  {
+    "name": "Jan G.",
+    "role": "Schlagzeug",
+    "info": "Gründungsmitglied, Slayer-Maniac",
+    "image": "/assets/home/band-jan.png",
+    "socialLinks": [
+      {
+        "href": "https://www.facebook.com/jan.galinski.74",
+        "type": "facebook"
+      },
+      {
+        "href": "https://twitter.com/jangalinski",
+        "type": "twitter"
+      },
+      {
+        "href": "https://www.youtube.com/channel/UCPyIu3_l2-VIlWdXzmEJFpQ",
+        "type": "youtube"
+      }
+    ]
+  },
+  {
+    "name": "Lutz R.",
+    "role": "Bass",
+    "info": "seit 1998, Silberrücken",
+    "image": "/assets/home/band-lutz.png",
+    "socialLinks": [
+      {
+        "href": "https://www.facebook.com/profile.php?id=100000017702355",
+        "type": "facebook"
+      }
+    ]
+  }
+]
