@@ -11,7 +11,6 @@ import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.init.registerStyleBase
 import kotlinx.browser.document
 import kotlinx.browser.window
-import org.w3c.dom.HTMLLinkElement
 
 @InitSilk
 fun initStyles(ctx: InitSilkContext) {
@@ -22,32 +21,7 @@ fun initStyles(ctx: InitSilkContext) {
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
   DisposableEffect(Unit) {
-    val head = document.head
-    if (head != null) {
-      if (document.getElementById("bstdoom-favicon") == null) {
-        val link = document.createElement("link") as HTMLLinkElement
-        link.id = "bstdoom-favicon"
-        link.rel = "icon"
-        link.type = "image/x-icon"
-        link.href = "/favicon.ico"
-        head.appendChild(link)
-      }
-      if (document.getElementById("bstdoom-font-awesome-css") == null) {
-        val link = document.createElement("link") as HTMLLinkElement
-        link.id = "bstdoom-font-awesome-css"
-        link.rel = "stylesheet"
-        link.href = "/css/font-awesome.min.css"
-        head.appendChild(link)
-      }
-      if (document.getElementById("bstdoom-theme-css") == null) {
-        val link = document.createElement("link") as HTMLLinkElement
-        link.id = "bstdoom-theme-css"
-        link.rel = "stylesheet"
-        link.href = "/css/theme.css"
-        head.appendChild(link)
-      }
-    }
-
+    // Keep only the dynamic background rotation here; static assets are now injected via Kobweb's generated head.
     val body = document.body
     val previousBackgroundImage = body?.style?.backgroundImage
     val previousBackgroundPosition = body?.style?.backgroundPosition

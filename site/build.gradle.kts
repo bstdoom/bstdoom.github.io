@@ -1,4 +1,9 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
+import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension
+import kotlinx.html.link
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
@@ -14,10 +19,28 @@ version = "1.0-SNAPSHOT"
 kobweb {
   app {
     index {
-      description.set("Powered by Kobweb")
+      description.set("B.S.T. - Hamburg City Doom")
+      head.add {
+        link {
+          attributes["id"] = "bstdoom-font-awesome-css"
+          rel = "stylesheet"
+          href = "/css/font-awesome.min.css"
+        }
+        link {
+          attributes["id"] = "bstdoom-theme-css"
+          rel = "stylesheet"
+          href = "/css/theme.css"
+        }
+      }
     }
   }
 }
+
+
+rootProject.plugins.withType<YarnPlugin> {
+  rootProject.extensions.getByType<YarnRootExtension>().lockFileDirectory = rootProject.file("gradle/kotlin-js-store")
+}
+
 
 kotlin {
   configAsKobwebApplication("bstdoom", includeServer = true)
@@ -31,7 +54,6 @@ kotlin {
       implementation(libs.compose.html.core)
       implementation(libs.kobweb.core)
       implementation(libs.kobweb.silk)
-      implementation(libs.silk.icons.fa)
       implementation(libs.kobwebx.markdown)
       implementation(project(":worker"))
     }

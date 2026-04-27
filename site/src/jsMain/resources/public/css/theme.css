@@ -1,4 +1,58 @@
-@import url("https://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800");
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("../fonts/dosis/Dosis-200.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/dosis/Dosis-300.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/dosis/Dosis-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/dosis/Dosis-500.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/dosis/Dosis-600.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/dosis/Dosis-700.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Dosis";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../fonts/dosis/Dosis-800.ttf") format("truetype");
+}
 
 html,
 body {
