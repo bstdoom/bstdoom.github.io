@@ -11,4 +11,5 @@ server:
       script: "build/kotlin-webpack/js/productionExecutable/bstdoom.js"
       siteRoot: ".kobweb/site"
 
-  port: 8080
+  port: 9357
+
