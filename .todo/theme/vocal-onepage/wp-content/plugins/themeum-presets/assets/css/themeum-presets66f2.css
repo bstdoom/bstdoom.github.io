@@ -1,0 +1,95 @@
+.style-chooser {
+  width: 210px;
+  left: -210px;
+  position: fixed;
+  top: 150px;
+  z-index: 99999;
+  -webkit-transition: left 400ms;
+  transition: left 400ms;
+}
+
+.style-chooser.opened {
+  left: 0;
+}
+
+.style-chooser .toggler {
+  position: absolute;
+  top: 0;
+  right: -48px;
+  display: inline-block;
+  background: #fff;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 24px;
+  color: #000;
+}
+
+.style-chooser-inner {
+  position: relative;
+  background: #fff;
+  padding: 15px;
+}
+
+.style-chooser-inner h4 {
+  color: #333;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.style-chooser-inner ul {
+  list-style: none;
+  padding: 0;
+  margin: -5px;
+}
+
+.style-chooser-inner ul li {
+  display: block;
+  width: 60px;
+  float: left;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.style-chooser-inner ul li.active a {
+  -webkit-box-shadow: 0 0 0 3px rgba(0,0,0,.2) inset;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.2) inset;
+}
+
+.style-chooser-inner ul li a {
+  display: block;
+  height: 40px;
+  position: relative;
+}
+
+.style-chooser-inner ul li.preset1 a {
+  background: #EC5538;
+}
+
+.style-chooser-inner ul li.preset2 a {
+  background: #00bff3;
+}
+
+.style-chooser-inner ul li.preset3 a {
+  background: #00a651;
+}
+
+
+.style-chooser-inner ul li.preset4 a {
+  background: #ed145b;
+}
+
+.style-chooser-inner ul li.preset5 a {
+  background: #8560a8;
+}
+
+.style-chooser-inner ul li.preset6 a {
+  background: #c98846;
+}
+

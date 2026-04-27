@@ -1,0 +1,142 @@
+/*General*/
+a,
+.social-icons a:hover,
+.social-share ul li a:hover,
+#sidebar .widget_categories ul li a:hover,
+#sidebar .widget_categories ul li a:hover:before {
+  color: #EC5538;
+}
+
+a:hover {
+  color: #dc3515
+}
+
+.btn.btn-primary,
+button, input[type="submit"],
+.product-thumbnail-outer .add_to_cart_button {
+  background: #EC5538;
+  box-shadow: 0 2px #ad2a11;
+}
+
+.btn.btn-primary:hover,
+button:hover, input[type="submit"]:hover,
+.product-thumbnail-outer .add_to_cart_button:hover {
+  background-color: #dc3515;
+}
+
+.preloader {
+  background: #EC5538;
+}
+
+/*Menu*/
+#main-menu .navbar-nav > li.active > a, 
+#main-menu .navbar-nav > li:hover > a {
+  color: #ec5538;
+}
+
+@media only screen and (min-width : 768px) {
+  ul.sub-menu{
+    background: #ec5538;
+  }
+}
+
+/*Pagination*/
+.pagination >li>a:hover,
+.pagination >li.active>a,
+.pagination >li.active>a:hover,
+.entry-meta .tag-links a:hover,
+.entry-meta .tag-links a:hover,
+.shortcode-latest-blogs .entry-date {
+  background: #ec5538;
+  color: #fff;
+}
+
+.entry-meta .tag-links a:hover:before {
+  border-right-color: #ec5538;
+}
+
+/*Audio Player*/
+.wp-playlist .mejs-container.mejs-audio  .mejs-controls .mejs-play,
+.wp-playlist .mejs-container.mejs-audio  .mejs-controls .mejs-pause,
+.wp-playlist .mejs-container.mejs-audio .mejs-controls .mejs-time-rail .mejs-time-current, 
+.wp-playlist .mejs-container.mejs-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,
+.wp-playlist .mejs-container.mejs-audio  .mejs-controls .mejs-time-rail .mejs-time-float,
+.sc-player .sc-controls {
+  background: #EC5538;
+}
+
+.wp-playlist .mejs-container.mejs-audio  .mejs-controls .mejs-time-rail .mejs-time-float-corner {
+  border-color: #EC5538 transparent transparent transparent;
+}
+
+.sc-player ol.sc-trackslist li.active a,
+.wp-playlist .wp-playlist-tracks .wp-playlist-item.wp-playlist-playing a {
+  color: #EC5538; 
+}
+
+/*Event*/
+.overlay,
+.album-overlay .album-info,
+.gallery-overlay,
+ul.gallery-shortcode li a:before,
+.media-performer,
+.tour-content {
+  background-color:rgba(236, 85, 56, 0.8);
+}
+
+.shortcode-upcoming-event .entry-date,
+.flexslider.item-date-wrapper ul li.flex-active-slide,
+.event-date-time .event-date i,
+.event-date-time .event-time i,
+.featured .pricing-plan {
+  background: #ec5538;
+}
+
+#event-countdown .countdown-section:nth-child(odd) {
+  background: rgba(236,85,56,0.7);
+} 
+
+#event-countdown .countdown-section:nth-child(even) {
+  background: rgba(194,49,21,0.7);
+}
+
+.pull-left .event-tabs {
+  background: #ea4525;
+}
+
+
+
+/*woo*/
+.woocommerce div.product .woocommerce-tabs ul.nav-tabs > li.active > a,
+.woocommerce-page div.product .woocommerce-tabs ul.nav-tabs > li.active > a,
+.woocommerce #content div.product .woocommerce-tabs ul.nav-tabs > li.active > a,
+.woocommerce-page #content div.product .woocommerce-tabs ul.nav-tabs > li.active > a,
+.woo-cart-items > span,
+#navigation .woocommerce.widget_shopping_cart,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
+.woocommerce-page .widget_price_filter .ui-slider .ui-slider-handle,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,
+.woocommerce-page .widget_price_filter .ui-slider .ui-slider-range,
+span.onsale {
+  background: #EC5538;
+}
+
+.woo-cart-items > span:after {
+  border-color: transparent transparent transparent #EC5538;
+}
+
+@media only screen and (max-width : 480px) {
+  #event-countdown .countdown-section:nth-child(4),
+  #event-countdown .countdown-section:nth-child(1) {
+    background: rgba(236,85,56,0.7);
+  }
+
+  #event-countdown .countdown-section:nth-child(2),
+  #event-countdown .countdown-section:nth-child(3) {
+    background: rgba(194,49,21,0.7);
+  }
+}
+
+
+
+

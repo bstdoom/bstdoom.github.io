@@ -1,0 +1,204 @@
+/*
+  Theme Name: vocal
+  Theme Uri: http://www.themeum.com/wordpress/themes/vocal-music-event-wordpress-theme/
+  Author: Themeum
+  Author Uri: http://www.themeum.com
+  Description: Responsive Music/event WordPress Theme
+  Version: 4.8
+  License: GNU General Public License v2 or later
+  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+  Tags: black, blue, green, pink, purple, dark, right-sidebar, two-columns, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, full-width-template, microformats, post-formats, sticky-post, theme-options
+*/
+
+@import url('css/bootstrap.min.css');
+@import url('css/font-awesome.min.css');
+@import url('css/animate.min.css');
+@import url('css/owl.carousel.css');
+@import url('css/owl.theme.css');
+@import url('css/owl.transitions.css');
+@import url('css/flexslider.css');
+@import url('css/lightbox.css');
+@import url('css/soundcloud-player.css');
+@import url('css/prettyPhoto.css');
+
+@import url(http://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800);
+
+.alignleft,
+.alignright,
+.aligncenter,
+.alignnone,
+.wp-caption.alignnone img,
+.widget img {
+  display: block;
+  width: 100% \9;
+  max-width: 100%;
+  height: auto;
+}
+
+.widget {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.widget .recentcomments a {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.widget select {
+  max-width: 100%;
+}
+
+.widget.widget_categories ul > li > a,
+.widget.widget_archive ul > li > a,
+.widget.widget_recent_comments ul > li > a {
+  display: inline !important;
+  margin-right: 5px;
+}
+
+.widget ul.sub-menu,
+.widget_pages ul.children{
+  background: transparent;
+  padding-left: 10px;
+}
+
+.sticky span.featured-post {
+  font-size: 25px;
+}
+
+
+
+.entry-content input{
+  background-color: rgba(0,0,0,.3);
+  border: 1px solid rgba(255,255,255,.2);
+  outline: 0;
+}
+
+.wp-caption{
+  max-width: 100%;
+}
+
+.wp-caption img{
+  max-width: 100%;
+  height: auto;
+}
+
+.wp-caption-text{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12px;
+  text-align: center;
+}
+
+.wp-caption .wp-caption-text, .entry-caption, .gallery-caption{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 12px;
+  text-align: center;
+}
+
+.sticky {
+
+}
+
+.gallery-caption{
+
+}
+
+.bypostauthor{
+
+}
+
+.alignright {
+  float: right;
+}
+
+img.alignright{
+  margin: 5px 0 5px 20px;
+}
+
+.alignleft {
+  float: left;
+}
+
+img.alignleft{
+  float: left;
+  margin: 5px 20px 5px 0;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.aligncenter {
+  margin: 5px auto;
+}
+
+.wp-caption.alignleft{
+  margin: 5px 20px 5px 0;
+}
+
+.wp-caption.alignright{
+  margin: 5px 0 5px 20px;
+}
+
+
+table {
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+  line-height: 2;
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
+}
+
+caption {
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+th {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+td {
+  border-top: 1px solid rgba(255,255,255,.3);
+  padding: 6px 10px 6px 0;
+}
+
+del {
+  color: #f1f1f1;
+}
+
+ins {
+  background: #000;
+  text-decoration: none;
+}
+
+dl {
+  margin: 0 20px;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 0 20px;
+}
+
+.search-block {
+    display: inline-block;
+    position: relative;
+}
