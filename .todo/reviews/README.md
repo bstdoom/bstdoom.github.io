@@ -8,12 +8,12 @@ Current structure:
   - raw review source material
   - screenshots, scans, and documents that are not duplicated in the active site data
 - `legacy-sidebars/`
-  - imported Grav sidebar review sections
+  - one consolidated markdown file per release
+  - imported Grav sidebar review sections merged across duplicate source trees
   - mostly redundant with the review excerpts already stored in the current `release.json` files
 
 Notes:
 
 - The site uses the `release.json` review arrays as the active source of truth.
-- The sidebar markdown files are kept only as legacy reference material.
+- The sidebar markdown files are kept only as legacy reference material, one file per release.
 - Screenshots and scans in the data-review folders should stay available for future verification.
-
