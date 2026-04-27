@@ -6,7 +6,7 @@ serve:
 export:
     cd site && kobweb export
 
-# serve the exported site on port 9358
-static:
-    php -S localhost:9358 -t site/.kobweb/site
-
+# export the site and preview it over python3 on port 8080
+preview:
+    cd site && kobweb export --layout static
+    cd site/.kobweb/site && python3 -m http.server 8080
