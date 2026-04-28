@@ -60,6 +60,9 @@ jobs:
       - name: Run export
         run: ./gradlew :site:kobwebExport
 
+      - name: Add custom domain marker
+        run: cp site/src/jsMain/resources/public/CNAME site/.kobweb/site/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
