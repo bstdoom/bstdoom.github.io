@@ -35,6 +35,12 @@ class SiteContentPlugin : Plugin<Project> {
       constName.set("BAND_MEMBERS_JSON")
     }
 
+    project.tasks.register<GenerateJsonSourceTask>("generateAboutSource") {
+      inputFile.set(project.layout.projectDirectory.file("src/jsMain/resources/data/about.json"))
+      outputFile.set(generatedDir.map { it.file("io/github/bstdoom/generated/AboutData.kt") })
+      constName.set("ABOUT_JSON")
+    }
+
     project.tasks.register<GenerateReleaseIndexSourceTask>("generateReleaseIndexSource") {
       inputDirectory.set(project.layout.projectDirectory.dir("src/jsMain/resources/data/releases"))
       outputFile.set(generatedDir.map { it.file("io/github/bstdoom/generated/ReleaseIndexData.kt") })

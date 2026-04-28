@@ -72,9 +72,9 @@ Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben a
 
 Wenn Sie den auf der Webseite angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind. Weitere Daten werden nicht erhoben. Diese Daten verwenden wir ausschließlich für den Versand der angeforderten Informationen und geben sie nicht an Dritte weiter. Die erteilte Einwilligung zur Speicherung der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit widerrufen, etwa über den "Austragen"-Link im Newsletter.
 
-### Spotify
+### Bandcamp
 
-Auf unseren Seiten sind Funktionen des Musik-Dienstes Spotify eingebunden. Anbieter ist die Spotify AB, Birger Jarlsgatan 61, 113 56 Stockholm in Schweden. Die Spotify PlugIns erkennen Sie an dem grünen Logo auf unserer Seite. Eine Übersicht über die Spotify-PlugIns finden Sie unter https://developer.spotify.com Dadurch kann beim Besuch unserer Seiten über das Plugin eine direkte Verbindung zwischen Ihrem Browser und dem Spotify-Server hergestellt werden. Spotify erhält dadurch die Information, dass Sie mit Ihrer IP-Adresse unsere Seite besucht haben. Wenn Sie den Spotify Button anklicken während Sie in Ihrem Spotify-Account eingeloggt sind, können Sie die Inhalte unserer Seiten auf Ihrem Spotify Profil verlinken. Dadurch kann Spotify den Besuch unserer Seiten Ihrem Benutzerkonto zuordnen. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Spotify: https://www.spotify.com/de/legal/privacy-policy/ Wenn Sie nicht wünschen, dass Spotify den Besuch unserer Seiten Ihrem Spotify-Nutzerkonto zuordnen kann, loggen Sie sich bitte aus Ihrem Spotify-Benutzerkonto aus.
+Auf unseren Seiten sind Inhalte des Musik-Dienstes Bandcamp eingebunden. Anbieter ist Bandcamp Ventures LLC. Beim Aufruf einer Seite mit eingebettetem Bandcamp-Player kann eine Verbindung zu den Servern von Bandcamp hergestellt werden. Bandcamp kann dabei Informationen wie Ihre IP-Adresse und technische Verbindungsdaten erhalten. Weitere Informationen hierzu finden Sie in der Datenschutzerklärung von Bandcamp: https://bandcamp.com/privacy
 
 ### YouTube
 

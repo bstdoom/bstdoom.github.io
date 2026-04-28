@@ -1,7 +1,10 @@
 package io.github.bstdoom.components
 
 import androidx.compose.runtime.*
+import io.github.bstdoom.generated.ABOUT_JSON
 import kotlinx.coroutines.delay
+import kotlin.js.JSON
+import kotlin.js.jsTypeOf
 import org.jetbrains.compose.web.dom.*
 
 data class BandSocialLink(
@@ -76,6 +79,7 @@ private fun Emphasis(text: String) {
 
 @Composable
 fun AboutSection() {
+  val about = rememberAboutSectionData()
   HomePanelSection(
     title = {
       Text("Über ")
@@ -94,25 +98,47 @@ fun AboutSection() {
         H3 {
           Text("Bio")
         }
-        P {
-          Text("Gegründet 1994 in Hamburg, steht B.S.T. für \"Blut, Schweiß, Tränen\". Die aktuelle Formation besteht seit 2009.")
-        }
-        P {
-          Text("Ihre Doom-Metal-Musik ist so dunkel und schwer wie ein Nordatlantiksturm im November. Mit ihren deutschen Texten zeichnen sie ein unerbittliches Bild von der rauen See und dem unausweichlichen Tod.")
-        }
-        P {
-          Text("B.S.T. ist definitiv keine Band für Gelegenheitssegler oder Freizeitkapitäne!")
+        about.bioParagraphs.forEach { paragraph ->
+          P {
+            Text(paragraph)
+          }
         }
         H3 {
           Text("Steckbrief")
         }
         Ul {
-          Li { Text("Herkunft: Hamburg, 1994") }
-          Li { Text("Stilrichtung: Doom Einflüsse: alles was langsam und hart ist") }
-          Li { Text("Besonderheiten: Deutsche Texte") }
+          about.facts.forEach { fact ->
+            Li { Text(fact) }
+          }
         }
       }
     }
+  }
+}
+
+private data class AboutSectionData(
+  val bioParagraphs: List<String>,
+  val facts: List<String>,
+)
+
+@Composable
+private fun rememberAboutSectionData(): AboutSectionData {
+  return remember(ABOUT_JSON) { parseAboutSectionData(ABOUT_JSON) }
+}
+
+private fun parseAboutSectionData(jsonText: String): AboutSectionData {
+  val raw = JSON.parse<dynamic>(jsonText)
+  return AboutSectionData(
+    bioParagraphs = parseStringArray(raw.bioParagraphs),
+    facts = parseStringArray(raw.facts),
+  )
+}
+
+private fun parseStringArray(rawValue: dynamic): List<String> {
+  return if (rawValue == null || jsTypeOf(rawValue) == "undefined") {
+    emptyList()
+  } else {
+    (rawValue as Array<dynamic>).map { it as String }
   }
 }
 
