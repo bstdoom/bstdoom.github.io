@@ -993,8 +993,19 @@ iframe {
     justify-content: space-between;
   }
 
+  .navbar-brand {
+    padding: 12px 0;
+  }
+
+  .site-logo {
+    height: 40px;
+  }
+
   .navbar-toggle {
     display: inline-flex;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 
   .navbar-menu-group {
@@ -1016,11 +1027,15 @@ iframe {
     flex-wrap: wrap;
   }
 
+  .nav-primary > li:first-child {
+    display: none;
+  }
+
   .navbar-nav > li > a {
-    font-size: 16px;
+    font-size: 15px;
     height: auto;
     line-height: 1.4;
-    padding: 8px 0;
+    padding: 6px 0;
   }
 
   .dropdown {
@@ -1039,7 +1054,7 @@ iframe {
   }
 
   .sub-menu > li > a {
-    padding: 6px 0;
+    padding: 4px 0;
   }
 
   .dropdown:hover > .sub-menu,
@@ -1048,7 +1063,6 @@ iframe {
   }
 
   .dropdown.selected > .sub-menu,
-  .dropdown:focus-within > .sub-menu,
   .navbar-menu-group.menu-open .dropdown > .sub-menu {
     display: block;
   }

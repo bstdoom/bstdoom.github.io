@@ -9,4 +9,5 @@ export:
 # export the site and preview it over python3 on port 9358
 preview:
     cd site && kobweb export --layout static
+    echo "Preview at http://localhost:9358"
     cd site/.kobweb/site && python3 -m http.server 9358
