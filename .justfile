@@ -1,10 +1,10 @@
 # run the kobweb server on the configured port in `./site`
 serve:
-    cd ./site && kobweb run
+    ./gradlew :site:kobwebStart -PkobwebEnv=DEV -PkobwebRunLayout=FULLSTACK
 
 # export the kobweb site to `./site/.kobweb/site`
 export:
-    cd ./site && kobweb export --layout static
+    ./gradlew :site:kobwebExport
 
 # export the site and preview it over python3 on port 9358
 preview:
