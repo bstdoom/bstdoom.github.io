@@ -878,6 +878,28 @@ iframe {
   font-size: 17px;
 }
 
+.impressum-contact {
+  display: grid;
+  gap: 10px;
+}
+
+.impressum-address {
+  color: #e0e0e0;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.impressum-contact li {
+  color: #e0e0e0;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.impressum-contact a,
+.impressum-address a {
+  color: #fff;
+}
+
 .release-main-column .site-content,
 .static-page,
 .music-page-intro {

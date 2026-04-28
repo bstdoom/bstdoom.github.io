@@ -34,19 +34,12 @@ fun ImpressumLayout(ctx: PageContext, content: @Composable () -> Unit) {
 @Composable
 private fun ImpressumSidebar(frontMatter: FrontMatterElement.ValueMap) {
   Div(attrs = { classes("static-page-content") }) {
-    StaticSidebarSection(
-      title = "Adresse",
-      lines = frontMatter.getValue("sidebar.address"),
-      renderAsPre = true,
-    )
+    AddressSidebarSection(frontMatter.getValue("sidebar.address"))
     StaticSidebarSection(
       title = "Vertreten durch",
       lines = frontMatter.getValue("sidebar.representatives"),
     )
-    StaticSidebarSection(
-      title = "Kontakt",
-      lines = frontMatter.getValue("sidebar.contact"),
-    )
+    ContactSidebarSection(frontMatter)
   }
 }
 
@@ -54,20 +47,60 @@ private fun ImpressumSidebar(frontMatter: FrontMatterElement.ValueMap) {
 private fun StaticSidebarSection(
   title: String,
   lines: List<String>,
-  renderAsPre: Boolean = false,
 ) {
   Div(attrs = { classes("static-section") }) {
     H3(attrs = { classes("static-section-title") }) {
       Text(title)
     }
-    if (renderAsPre) {
-      Pre {
-        Text(lines.joinToString("\n"))
+    Ul(attrs = { classes("static-list") }) {
+      lines.forEach { line ->
+        Li { Text(line) }
       }
-    } else {
-      Ul(attrs = { classes("static-list") }) {
-        lines.forEach { line ->
-          Li { Text(line) }
+    }
+  }
+}
+
+@Composable
+private fun AddressSidebarSection(lines: List<String>) {
+  Div(attrs = { classes("static-section") }) {
+    H3(attrs = { classes("static-section-title") }) {
+      Text("Adresse")
+    }
+    Div(attrs = { classes("impressum-address") }) {
+      lines.forEachIndexed { index, line ->
+        if (index > 0) {
+          Br()
+        }
+        Text(line)
+      }
+    }
+  }
+}
+
+@Composable
+private fun ContactSidebarSection(frontMatter: FrontMatterElement.ValueMap) {
+  val phone = frontMatter.query("sidebar.contact.phone")?.scalarOrNull()
+  val email = frontMatter.query("sidebar.contact.email")?.scalarOrNull()
+
+  Div(attrs = { classes("static-section") }) {
+    H3(attrs = { classes("static-section-title") }) {
+      Text("Kontakt")
+    }
+    Ul(attrs = { classes("static-list", "impressum-contact") }) {
+      phone?.let {
+        Li {
+          Text("Telefon: ")
+          A(href = "tel:" + it.replace(" ", "")) {
+            Text(it)
+          }
+        }
+      }
+      email?.let {
+        Li {
+          Text("E-Mail: ")
+          A(href = "mailto:$it") {
+            Text(it)
+          }
         }
       }
     }

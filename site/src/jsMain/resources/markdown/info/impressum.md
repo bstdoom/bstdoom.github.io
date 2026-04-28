@@ -12,9 +12,8 @@ sidebar:
     - Heiko Wenck
     - Lutz Reimer
   contact:
-    - Telefon: +49 170 916 37 45
-    - Telefax: +49 3222 336 8972
-    - E-Mail: jan@b-s-t.net
+    phone: +49 170 916 37 45
+    email: jan@b-s-t.net
 ---
 
 # Impressum
