@@ -130,6 +130,12 @@ iframe {
   flex-wrap: wrap;
 }
 
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .navbar-brand {
   display: inline-flex;
   align-items: center;
@@ -157,6 +163,27 @@ iframe {
   justify-content: flex-end;
   gap: 22px;
   margin-left: auto;
+}
+
+.navbar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-primary {
@@ -961,13 +988,28 @@ iframe {
     align-items: flex-start;
   }
 
+  .brand-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navbar-toggle {
+    display: inline-flex;
+  }
+
   .navbar-menu-group {
+    display: none;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 8px;
     margin-left: 0;
+    padding-bottom: 12px;
+  }
+
+  .navbar-menu-group.menu-open {
+    display: flex;
   }
 
   .nav-social {
@@ -986,7 +1028,7 @@ iframe {
   }
 
   .sub-menu {
-    display: block;
+    display: none;
     position: static;
     min-width: 0;
     padding: 0 0 0 16px;
@@ -998,6 +1040,17 @@ iframe {
 
   .sub-menu > li > a {
     padding: 6px 0;
+  }
+
+  .dropdown:hover > .sub-menu,
+  .dropdown:focus-within > .sub-menu {
+    display: none;
+  }
+
+  .dropdown.selected > .sub-menu,
+  .dropdown:focus-within > .sub-menu,
+  .navbar-menu-group.menu-open .dropdown > .sub-menu {
+    display: block;
   }
 
   .about-grid {

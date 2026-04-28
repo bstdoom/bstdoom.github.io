@@ -1,6 +1,10 @@
 package io.github.bstdoom.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import io.github.bstdoom.components.releases.releaseNavChildren
 import kotlinx.browser.window
 import org.jetbrains.compose.web.dom.*
@@ -44,6 +48,7 @@ private val mainNavLinks = listOf(
 @Composable
 fun SiteScaffold(content: @Composable () -> Unit) {
   val currentPath = window.location.pathname
+  var menuOpen by remember { mutableStateOf(false) }
   val renderedLinks = mainNavLinks.map { link ->
     when (link.label) {
       "Musik" -> link.copy(children = releaseNavChildren())
@@ -55,16 +60,27 @@ fun SiteScaffold(content: @Composable () -> Unit) {
   Div(attrs = { classes("site-shell") }) {
     Div(attrs = { id("navigation") }) {
       Div(attrs = { classes("site-container", "site-header-row") }) {
-        A(href = "/", attrs = { classes("navbar-brand") }) {
-          Img(
-            src = "/assets/theme/logo.png",
-            attrs = {
-              attr("alt", "B.S.T.")
-              classes("site-logo")
-            }
-          )
+        Div(attrs = { classes("brand-wrap") }) {
+          A(href = "/", attrs = { classes("navbar-brand") }) {
+            Img(
+              src = "/assets/theme/logo.png",
+              attrs = {
+                attr("alt", "B.S.T.")
+                classes("site-logo")
+              }
+            )
+          }
+          Button(attrs = {
+            classes("navbar-toggle")
+            attr("type", "button")
+            attr("aria-label", if (menuOpen) "Close menu" else "Open menu")
+            attr("aria-expanded", menuOpen.toString())
+            onClick { menuOpen = !menuOpen }
+          }) {
+            I(attrs = { classes("fa", if (menuOpen) "fa-times" else "fa-bars") })
+          }
         }
-        Div(attrs = { classes("navbar-menu-group") }) {
+        Div(attrs = { classes("navbar-menu-group"); if (menuOpen) classes("menu-open") }) {
           Ul(attrs = { classes("navbar-nav", "nav-primary") }) {
             renderedLinks.forEach { link ->
               NavItem(link = link, currentPath = currentPath)
@@ -163,7 +179,14 @@ private fun NavItem(
       classes("dropdown")
     }
   }) {
-    A(href = link.href) {
+    A(
+      href = link.href,
+      attrs = {
+        if (hasChildren) {
+          attr("role", "button")
+        }
+      }
+    ) {
       Text(link.label)
       if (hasChildren) {
         I(attrs = { classes("fa", "fa-angle-down") })
