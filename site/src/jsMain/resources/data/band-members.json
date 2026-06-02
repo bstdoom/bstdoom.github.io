@@ -42,5 +42,17 @@
         "type": "facebook"
       }
     ]
+  },
+  {
+    "name": "Lars R.",
+    "role": "Gitarre",
+    "info": "seit 2026, Tausendsassa",
+    "image": "/assets/home/band-lars.png",
+    "socialLinks": [
+      {
+        "href": "https://www.facebook.com/lars.rempe",
+        "type": "facebook"
+      }
+    ]
   }
 ]

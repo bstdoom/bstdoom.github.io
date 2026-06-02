@@ -42,7 +42,7 @@ fun HomeHeroSection() {
   Section(attrs = { id("home") }) {
     Div(attrs = { classes("hero-copy") }) {
       Div(attrs = { classes("home-kicker") }) {
-        Text("In Neuformierung - Mund abputzen und weiter")
+        Text("Neuer Gitarrist:  Lars! Willkommen!")
       }
       H1 {
         Text("B.S.T. - Hamburg City Doom")
