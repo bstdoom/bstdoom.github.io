@@ -318,6 +318,20 @@ iframe {
   margin-bottom: 12px;
 }
 
+.home-kicker a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  transition: opacity 150ms ease, color 150ms ease;
+}
+
+.home-kicker a:hover,
+.home-kicker a:focus {
+  color: #d0d0d0;
+  text-decoration: underline;
+}
+
 #home h1 {
   color: #fff;
   font-size: clamp(3rem, 8vw, 4.8rem);

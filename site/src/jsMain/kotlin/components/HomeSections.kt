@@ -2,10 +2,59 @@ package io.github.bstdoom.components
 
 import androidx.compose.runtime.*
 import io.github.bstdoom.generated.ABOUT_JSON
+import io.github.bstdoom.generated.HERO_NEWS_MD
 import kotlinx.coroutines.delay
 import kotlin.js.JSON
 import kotlin.js.jsTypeOf
 import org.jetbrains.compose.web.dom.*
+
+private sealed interface InlineContent {
+  data class Text(val text: String) : InlineContent
+  data class Link(val label: String, val href: String) : InlineContent
+}
+
+private val MARKDOWN_LINK_REGEX = Regex("""\[([^\]]+)\]\(([^)]+)\)""")
+
+private fun parseInlineMarkdown(rawText: String): List<InlineContent> {
+  val result = mutableListOf<InlineContent>()
+  var lastIndex = 0
+
+  for (match in MARKDOWN_LINK_REGEX.findAll(rawText)) {
+    if (match.range.first > lastIndex) {
+      result.add(InlineContent.Text(rawText.substring(lastIndex, match.range.first)))
+    }
+    val (label, href) = match.destructured
+    result.add(InlineContent.Link(label = label, href = href))
+    lastIndex = match.range.last + 1
+  }
+
+  if (lastIndex < rawText.length) {
+    result.add(InlineContent.Text(rawText.substring(lastIndex)))
+  }
+
+  return result
+}
+
+@Composable
+fun InlineMarkdown(text: String) {
+  val segments = remember(text) { parseInlineMarkdown(text) }
+  segments.forEach { segment ->
+    when (segment) {
+      is InlineContent.Text -> Text(segment.text)
+      is InlineContent.Link -> A(
+        href = segment.href,
+        attrs = {
+          if (segment.href.startsWith("http://") || segment.href.startsWith("https://")) {
+            attr("target", "_blank")
+            attr("rel", "noopener noreferrer")
+          }
+        }
+      ) {
+        Text(segment.label)
+      }
+    }
+  }
+}
 
 data class BandSocialLink(
   val href: String,
@@ -42,7 +91,7 @@ fun HomeHeroSection() {
   Section(attrs = { id("home") }) {
     Div(attrs = { classes("hero-copy") }) {
       Div(attrs = { classes("home-kicker") }) {
-        Text("Neuer Gitarrist:  Lars! Willkommen!")
+        InlineMarkdown(HERO_NEWS_MD.trim())
       }
       H1 {
         Text("B.S.T. - Hamburg City Doom")

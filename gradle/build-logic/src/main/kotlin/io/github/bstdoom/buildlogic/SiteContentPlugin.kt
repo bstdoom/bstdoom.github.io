@@ -23,6 +23,12 @@ class SiteContentPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     val generatedDir = project.layout.buildDirectory.dir("generated/site-content/src/jsMain/kotlin")
 
+    project.tasks.register<GenerateJsonSourceTask>("generateHeroNewsSource") {
+      inputFile.set(project.layout.projectDirectory.file("src/jsMain/resources/data/hero-news.md"))
+      outputFile.set(generatedDir.map { it.file("io/github/bstdoom/generated/HeroNewsData.kt") })
+      constName.set("HERO_NEWS_MD")
+    }
+
     project.tasks.register<GenerateJsonSourceTask>("generateHomeLinksSource") {
       inputFile.set(project.layout.projectDirectory.file("src/jsMain/resources/data/home-links.json"))
       outputFile.set(generatedDir.map { it.file("io/github/bstdoom/generated/HomeLinksData.kt") })
