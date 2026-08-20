@@ -23,10 +23,9 @@ class SiteContentPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     val generatedDir = project.layout.buildDirectory.dir("generated/site-content/src/jsMain/kotlin")
 
-    project.tasks.register<GenerateJsonSourceTask>("generateHeroNewsSource") {
-      inputFile.set(project.layout.projectDirectory.file("src/jsMain/resources/data/hero-news.md"))
-      outputFile.set(generatedDir.map { it.file("io/github/bstdoom/generated/HeroNewsData.kt") })
-      constName.set("HERO_NEWS_MD")
+    project.tasks.register<GenerateReadmeContentSourceTask>("generateReadmeContentSource") {
+      inputFile.set(project.rootProject.layout.projectDirectory.file("README.md"))
+      outputFile.set(generatedDir.map { it.file("io/github/bstdoom/generated/ReadmeContentData.kt") })
     }
 
     project.tasks.register<GenerateJsonSourceTask>("generateHomeLinksSource") {
@@ -92,6 +91,88 @@ class SiteContentPlugin : Plugin<Project> {
         task.name.startsWith("generate") && task.name.endsWith("Source")
       })
     }
+  }
+}
+
+@CacheableTask
+abstract class GenerateReadmeContentSourceTask : DefaultTask() {
+  @get:InputFile
+  @get:PathSensitive(PathSensitivity.RELATIVE)
+  abstract val inputFile: RegularFileProperty
+
+  @get:OutputFile
+  abstract val outputFile: RegularFileProperty
+
+  @TaskAction
+  fun generate() {
+    val markdown = inputFile.get().asFile.readText()
+    val sections = parseContentSections(markdown)
+
+    val renderedEntries = sections.entries.joinToString(",\n") { (key, value) ->
+      "    ${toKotlinRawString(key)} to ${toKotlinRawString(value)}"
+    }
+
+    val output = outputFile.get().asFile
+    output.parentFile.mkdirs()
+    output.writeText(
+      buildString {
+        appendLine("package io.github.bstdoom.generated")
+        appendLine()
+        appendLine("object ReadmeContent {")
+        appendLine("  private val sections: Map<String, String> = mapOf(")
+        if (renderedEntries.isNotBlank()) {
+          appendLine(renderedEntries)
+        }
+        appendLine("  )")
+        appendLine()
+        appendLine("  operator fun get(key: String): String =")
+        appendLine("    sections[key]")
+        appendLine("      ?: sections.entries.firstOrNull { it.key.equals(key, ignoreCase = true) }?.value")
+        appendLine("      ?: \"\"")
+        appendLine("}")
+      }
+    )
+  }
+
+  private fun parseContentSections(markdown: String): Map<String, String> {
+    val lines = markdown.lines()
+    val contentHeaderIndex = lines.indexOfFirst {
+      it.trim().equals("## Content", ignoreCase = true)
+    }
+    if (contentHeaderIndex == -1) return emptyMap()
+
+    val result = linkedMapOf<String, String>()
+    var currentSubheading: String? = null
+    val currentLines = mutableListOf<String>()
+
+    fun flush() {
+      val heading = currentSubheading ?: return
+      result[heading] = currentLines.joinToString("\n").trim()
+      currentLines.clear()
+    }
+
+    for (i in (contentHeaderIndex + 1) until lines.size) {
+      val line = lines[i]
+      val trimmed = line.trim()
+      if (trimmed.startsWith("## ") && !trimmed.startsWith("### ")) {
+        // Hit next h2 section, stop parsing content
+        break
+      }
+
+      if (trimmed.startsWith("### ")) {
+        flush()
+        currentSubheading = trimmed.removePrefix("### ").trim()
+      } else if (currentSubheading != null) {
+        currentLines.add(line)
+      }
+    }
+    flush()
+
+    return result
+  }
+
+  private fun toKotlinRawString(value: String): String {
+    return "\"\"\"" + value.replace("\"\"\"", "\\\"\\\"\\\"") + "\"\"\""
   }
 }
 

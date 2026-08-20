@@ -2,7 +2,7 @@ package io.github.bstdoom.components
 
 import androidx.compose.runtime.*
 import io.github.bstdoom.generated.ABOUT_JSON
-import io.github.bstdoom.generated.HERO_NEWS_MD
+import io.github.bstdoom.generated.ReadmeContent
 import kotlinx.coroutines.delay
 import kotlin.js.JSON
 import kotlin.js.jsTypeOf
@@ -90,8 +90,11 @@ data class LinkItem(
 fun HomeHeroSection() {
   Section(attrs = { id("home") }) {
     Div(attrs = { classes("hero-copy") }) {
-      Div(attrs = { classes("home-kicker") }) {
-        InlineMarkdown(HERO_NEWS_MD.trim())
+      val heroNews = ReadmeContent["News"].trim()
+      if (heroNews.isNotBlank()) {
+        Div(attrs = { classes("home-kicker") }) {
+          InlineMarkdown(heroNews)
+        }
       }
       H1 {
         Text("B.S.T. - Hamburg City Doom")

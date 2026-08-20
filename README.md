@@ -2,11 +2,11 @@
 
 A [Kobweb](https://github.com/varabyte/kobweb) based Band website used as a static site generator for Hamburgs finest doom metal band.
 
-This template is useful if you already know what you're doing and just want a clean slate. By default, it
-just creates a blank home page (which prints to the console so you can confirm it's working)
+## Content
 
-If you are still learning, consider instantiating the `app` template (or one of the examples) to see actual,
-working projects.
+### News
+
+Lars Live Premiere: [Cause of Deaf Fest](https://www.kph-hamburg.de/veranstaltungen/detail/cause-of-deaf-fest-2026/10-10-2026), 10.10. - Bambi
 
 ## Project Architecture
 
