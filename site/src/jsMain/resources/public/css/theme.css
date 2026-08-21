@@ -318,6 +318,11 @@ iframe {
   margin-bottom: 12px;
 }
 
+.home-kicker p {
+  margin: 0;
+  display: inline;
+}
+
 .home-kicker a {
   color: #fff;
   text-decoration: underline;

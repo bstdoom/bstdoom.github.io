@@ -7,53 +7,16 @@ import kotlinx.coroutines.delay
 import kotlin.js.JSON
 import kotlin.js.jsTypeOf
 import org.jetbrains.compose.web.dom.*
-
-private sealed interface InlineContent {
-  data class Text(val text: String) : InlineContent
-  data class Link(val label: String, val href: String) : InlineContent
-}
-
-private val MARKDOWN_LINK_REGEX = Regex("""\[([^\]]+)\]\(([^)]+)\)""")
-
-private fun parseInlineMarkdown(rawText: String): List<InlineContent> {
-  val result = mutableListOf<InlineContent>()
-  var lastIndex = 0
-
-  for (match in MARKDOWN_LINK_REGEX.findAll(rawText)) {
-    if (match.range.first > lastIndex) {
-      result.add(InlineContent.Text(rawText.substring(lastIndex, match.range.first)))
-    }
-    val (label, href) = match.destructured
-    result.add(InlineContent.Link(label = label, href = href))
-    lastIndex = match.range.last + 1
-  }
-
-  if (lastIndex < rawText.length) {
-    result.add(InlineContent.Text(rawText.substring(lastIndex)))
-  }
-
-  return result
-}
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
-fun InlineMarkdown(text: String) {
-  val segments = remember(text) { parseInlineMarkdown(text) }
-  segments.forEach { segment ->
-    when (segment) {
-      is InlineContent.Text -> Text(segment.text)
-      is InlineContent.Link -> A(
-        href = segment.href,
-        attrs = {
-          if (segment.href.startsWith("http://") || segment.href.startsWith("https://")) {
-            attr("target", "_blank")
-            attr("rel", "noopener noreferrer")
-          }
-        }
-      ) {
-        Text(segment.label)
-      }
+fun RenderHtml(html: String) {
+  Span(attrs = {
+    ref { element ->
+      element.innerHTML = html
+      onDispose { }
     }
-  }
+  })
 }
 
 data class BandSocialLink(
@@ -90,11 +53,15 @@ data class LinkItem(
 fun HomeHeroSection() {
   Section(attrs = { id("home") }) {
     Div(attrs = { classes("hero-copy") }) {
-      val heroNews = ReadmeContent["News"].trim()
-      if (heroNews.isNotBlank()) {
-        Div(attrs = { classes("home-kicker") }) {
-          InlineMarkdown(heroNews)
-        }
+      val heroNews = ReadmeContent["News"]
+      if (heroNews.isNotBlank) {
+        Div(attrs = {
+          classes("home-kicker")
+          ref { element ->
+            element.innerHTML = heroNews.html
+            onDispose { }
+          }
+        })
       }
       H1 {
         Text("B.S.T. - Hamburg City Doom")
@@ -266,7 +233,7 @@ fun LinksSection(groups: List<LinkGroup>) {
   LaunchedEffect(groups) {
     if (groups.size > 1) {
       while (true) {
-        delay(12000)
+        delay(12000.milliseconds)
         activeIndex = (activeIndex + 1) % groups.size
       }
     }

@@ -17,6 +17,8 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.register
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
+import org.commonmark.parser.Parser
+import org.commonmark.renderer.html.HtmlRenderer
 import java.io.File
 
 class SiteContentPlugin : Plugin<Project> {
@@ -108,8 +110,17 @@ abstract class GenerateReadmeContentSourceTask : DefaultTask() {
     val markdown = inputFile.get().asFile.readText()
     val sections = parseContentSections(markdown)
 
-    val renderedEntries = sections.entries.joinToString(",\n") { (key, value) ->
-      "    ${toKotlinRawString(key)} to ${toKotlinRawString(value)}"
+    val parser = Parser.builder().build()
+    val renderer = HtmlRenderer.builder().build()
+
+    val renderedEntries = sections.entries.joinToString(",\n") { (key, rawMarkdown) ->
+      val document = parser.parse(rawMarkdown)
+      val html = renderer.render(document).trim()
+      """
+    ${toKotlinRawString(key)} to ReadmeContentEntry(
+      html = ${toKotlinRawString(html)},
+      markdown = ${toKotlinRawString(rawMarkdown)}
+    )""".trimEnd()
     }
 
     val output = outputFile.get().asFile
@@ -118,17 +129,25 @@ abstract class GenerateReadmeContentSourceTask : DefaultTask() {
       buildString {
         appendLine("package io.github.bstdoom.generated")
         appendLine()
+        appendLine("data class ReadmeContentEntry(")
+        appendLine("  val html: String = \"\",")
+        appendLine("  val markdown: String = \"\"")
+        appendLine(") {")
+        appendLine("  val isNotBlank: Boolean get() = markdown.isNotBlank() || html.isNotBlank()")
+        appendLine("  val isBlank: Boolean get() = !isNotBlank")
+        appendLine("}")
+        appendLine()
         appendLine("object ReadmeContent {")
-        appendLine("  private val sections: Map<String, String> = mapOf(")
+        appendLine("  private val sections: Map<String, ReadmeContentEntry> = mapOf(")
         if (renderedEntries.isNotBlank()) {
           appendLine(renderedEntries)
         }
         appendLine("  )")
         appendLine()
-        appendLine("  operator fun get(key: String): String =")
+        appendLine("  operator fun get(key: String): ReadmeContentEntry =")
         appendLine("    sections[key]")
         appendLine("      ?: sections.entries.firstOrNull { it.key.equals(key, ignoreCase = true) }?.value")
-        appendLine("      ?: \"\"")
+        appendLine("      ?: ReadmeContentEntry()")
         appendLine("}")
       }
     )

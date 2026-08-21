@@ -3,6 +3,10 @@ plugins {
   `java-gradle-plugin`
 }
 
+dependencies {
+  implementation(libs.commonmark)
+}
+
 gradlePlugin {
   plugins {
     create("bstdoomSiteContent") {

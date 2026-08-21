@@ -1,10 +1,12 @@
 [versions]
+commonmark = "0.24.0"
 compose-html = "1.11.1"
 compose-runtime = "1.11.4"
 kobweb = "0.25.0"
 kotlin = "2.4.10"
 
 [libraries]
+commonmark = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
 compose-html-core = { module = "org.jetbrains.compose.html:html-core", version.ref = "compose-html" }
 compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose-runtime" }
 kobweb-api = { module = "com.varabyte.kobweb:kobweb-api", version.ref = "kobweb" }
