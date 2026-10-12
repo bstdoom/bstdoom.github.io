@@ -6,6 +6,10 @@ A [Kobweb](https://github.com/varabyte/kobweb) based Band website used as a stat
 
 ### News
 
+Wir sind wieder da!
+
+## Archiv
+
 Lars Live Premiere: [Cause of Deaf Fest](https://www.kph-hamburg.de/veranstaltungen/detail/cause-of-deaf-fest-2026/10-10-2026), 10.10. - Bambi
 
 ## Project Architecture
