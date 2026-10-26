@@ -1,5 +1,5 @@
 [versions]
-commonmark = "0.30.1"
+commonmark = "0.31.0"
 compose-html = "1.12.2"
 compose-runtime = "1.11.4"
 kobweb = "0.25.1"
