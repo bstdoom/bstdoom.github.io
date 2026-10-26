@@ -1,0 +1,90 @@
+---
+title: B.S.T.
+description: B.S.T. - Hamburg City Doom
+layout: base
+---
+<section id="home">
+    <div class="hero-copy">
+        <div class="home-kicker">
+            <p>{=cdi:home.news}</p>
+        </div>
+        <h1>B.S.T. - Hamburg City Doom</h1>
+    </div>
+</section>
+
+<section class="bg site-panel">
+    <h2 class="heading">Über <span style="font-weight: 700;">uns</span></h2>
+    <div class="about-grid">
+        <img class="about-photo" src="/assets/home/bandfoto.jpg" alt="B.S.T. Bandfoto">
+        <div class="about-content">
+            <h3>Bio</h3>
+            {#for paragraph in cdi:about.bioParagraphs}
+                <p>{=paragraph}</p>
+            {/for}
+            <h3>Steckbrief</h3>
+            <ul>
+                {#for fact in cdi:about.facts}
+                    <li>{=fact}</li>
+                {/for}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="bg site-panel">
+    <h2 class="heading">Die <span style="font-weight: 700;">Band</span></h2>
+    <div class="performers-grid">
+        {#for member in cdi:bandMembers.list}
+            <div class="perfomer-wrapper single-performer">
+                <img class="single-performer-image" src="{=member.image}" alt="{=member.name}">
+                <div class="overlay">
+                    <div class="overley-content">
+                        <h3>{=member.name}</h3>
+                        <h4 class="performer-role">{=member.role}</h4>
+                        <p>{=member.info}</p>
+                        {#if member.socialLinks}
+                            <div class="social-icons">
+                                {#for social in member.socialLinks}
+                                    <a href="{=social.href}" target="_blank" rel="noopener noreferrer" aria-label="{=social.type}"><i class="fa fa-{=social.type}"></i></a>
+                                {/for}
+                            </div>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        {/for}
+    </div>
+</section>
+
+<section class="bg site-panel">
+    <h2 class="heading">Freunde &amp; <span style="font-weight: 700;">Links</span></h2>
+    <div class="links-carousel">
+        <div class="links-carousel-viewport">
+            <div class="links-carousel-track">
+                {#for group in cdi:homeLinks.list}
+                    <div class="links-carousel-slide" aria-hidden="true">
+                        <h3 class="links-group-title">{=group.title}</h3>
+                        <div class="links-grid">
+                            {#for item in group.items}
+                                <a class="links-item" href="{=item.href}" target="_blank" rel="noopener noreferrer">
+                                    <span style="font-weight: 700;">{=item.label}</span>{#if item.location}
+                                    ({=item.location}){/if}
+                                </a>
+                            {/for}
+                        </div>
+                    </div>
+                {/for}
+            </div>
+        </div>
+        <div class="links-carousel-controls">
+            <button class="links-carousel-control" type="button" data-carousel-direction="previous" aria-label="Previous section">‹</button>
+            <button class="links-carousel-control" type="button" data-carousel-direction="next" aria-label="Next section">›</button>
+        </div>
+        <div class="links-carousel-dots" role="tablist" aria-label="Link sections">
+            {#for group in cdi:homeLinks.list}
+                <button class="links-carousel-dot" type="button" role="tab" aria-label="Show {=group.title}" aria-selected="false">{=group.title}</button>
+            {/for}
+        </div>
+    </div>
+</section>
+

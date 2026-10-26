@@ -33,3 +33,4 @@ includeBuild("gradle/build-logic")
 
 include(":site")
 include(":worker")
+include(":roq")

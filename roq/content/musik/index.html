@@ -1,0 +1,24 @@
+---
+title: Musik
+description: B.S.T. Veröffentlichungen
+layout: base
+---
+<section class="bg site-panel music-page-intro">
+    <h2 class="heading">Musik</h2>
+    <p class="music-intro-copy">Hier findest Du unsere Veröffentlichungen im Überblick.</p>
+</section>
+
+<section class="bg site-panel">
+    <h2 class="heading">Veröffentlichungen</h2>
+    <div class="release-grid">
+        {#for release in cdi:releaseCatalog.map.values}
+            <a class="release-card" href="/musik/{=release.slug}/">
+                <img class="release-cover" src="{=release.thumbnailImage}" alt="{=release.coverAlt}">
+                <div class="release-copy">
+                    <div class="release-title">{=release.title}</div>
+                    <div class="release-meta">{=release.releaseType} ({=release.year})</div>
+                </div>
+            </a>
+        {/for}
+    </div>
+</section>
