@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - feature/58/roq
 
   workflow_dispatch:
 
