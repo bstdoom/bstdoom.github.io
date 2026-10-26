@@ -1,0 +1,56 @@
+{
+  "title": "Unter Deck",
+  "coverImage": "/assets/releases/unter_deck_detail.jpg",
+  "coverAlt": "Unter Deck Cover",
+  "releaseType": "fullLength",
+  "year": 2017,
+  "showInNavigation": true,
+  "facts": [
+    "Recording: Rosenquarz Studio",
+    "Release: 2017"
+  ],
+  "tracks": [
+    { "name": "Stimmen", "time": "10:23" },
+    { "name": "Aufgabe", "time": "10:44" },
+    { "name": "Brenne", "time": "08:57" },
+    { "name": "Chance", "time": "06:46" },
+    { "name": "Ride On", "time": "05:27" }
+  ],
+  "bandcampPlayerUrl": "https://bandcamp.com/EmbeddedPlayer/v=2/album=2238215893/size=large/bgcol=0d0d0d/linkcol=f1f1f1/tracklist=true/artwork=small/transparent=true/",
+  "spotifyEmbedUrl": "https://open.spotify.com/embed/album/41nUKzpKHci7aY7e0GULdw",
+  "itunesUrl": "https://music.apple.com/us/album/unter-deck/1215878221?uo=4",
+  "bandcampUrl": "https://bstdoom.bandcamp.com/album/unter-deck",
+  "actionLinks": [],
+  "reviews": [
+    {
+      "source": "Deaf Forever",
+      "url": "https://www.deaf-forever.de",
+      "quote": "Vier bockstarke Songs, die an die emotionalsten Momente von Crowbar erinnern. Wunderschön!"
+    },
+    {
+      "source": "Rock Hard",
+      "url": "https://www.rockhard.de",
+      "quote": "B.S.T. zocken lupenreinen Doom mit melodischer New-Orleans-Schlagseite. Starkes Ding!"
+    },
+    {
+      "source": "Obliveon (8,5/10)",
+      "url": "http://www.obliveon.de/pn-om/modules.php?op=modload&name=tplcdeigenp&file=index&req=showcontent&id=22452",
+      "quote": "\"Unter Deck\" entfaltet musikalischen Tiefgang und die Prosa der Texte ist auch alles andere als flach."
+    },
+    {
+      "source": "Legacy (13/15)",
+      "url": "http://www.legacy.de",
+      "quote": "Die deutschen Texte heben B.S.T. aus der Masse der Genrekollegen ab."
+    },
+    {
+      "source": "powermetal.de (10/10)",
+      "url": "http://powermetal.de/review/review-B_S_T_/Unter_Deck,31265,31233.html",
+      "quote": "Origineller und emotionaler wird Doom nicht mehr."
+    },
+    {
+      "source": "streetclip.tv (8/10)",
+      "url": "http://www.streetclip.tv/magazine/details/reviews/article/b-s-t-unter-deck/",
+      "quote": "B.S.T. sind die deutsche Stimme des Doom. Hört sie."
+    }
+  ]
+}
