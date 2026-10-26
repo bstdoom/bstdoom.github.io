@@ -1,3 +1,7 @@
+
+_list:
+  just -l
+
 # run the kobweb server on the configured port in `./site`
 serve:
     ./gradlew :site:kobwebStart -PkobwebEnv=DEV -PkobwebRunLayout=FULLSTACK
