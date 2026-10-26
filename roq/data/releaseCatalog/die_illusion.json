@@ -12,12 +12,30 @@
     "Release: 2013"
   ],
   "tracks": [
-    { "name": "Die Illusion", "time": "07:29" },
-    { "name": "Die Moral", "time": "08:57" },
-    { "name": "Die Lüge", "time": "07:05" },
-    { "name": "Die Bilder", "time": "07:46" },
-    { "name": "Die Nacht", "time": "05:37" },
-    { "name": "Die Hoffnung", "time": "09:41" }
+    {
+      "name": "Die Illusion",
+      "time": "07:29"
+    },
+    {
+      "name": "Die Moral",
+      "time": "08:57"
+    },
+    {
+      "name": "Die Lüge",
+      "time": "07:05"
+    },
+    {
+      "name": "Die Bilder",
+      "time": "07:46"
+    },
+    {
+      "name": "Die Nacht",
+      "time": "05:37"
+    },
+    {
+      "name": "Die Hoffnung",
+      "time": "09:41"
+    }
   ],
   "bandcampPlayerUrl": "https://bandcamp.com/EmbeddedPlayer/v=2/album=3028144828/size=large/bgcol=0d0d0d/linkcol=f1f1f1/tracklist=true/artwork=small/transparent=true/",
   "spotifyEmbedUrl": "https://open.spotify.com/embed/album/3bgPe0umYuNjeH4WCdokgb",
@@ -52,7 +70,7 @@
     },
     {
       "source": "laut.de (4/5)",
-      "url": "http://www.laut.de/B.S.T./Die-Illusion-(Album)",
+      "url": "https://laut.de/B.S.T./Alben/Die-Illusion-89984",
       "quote": "So unkonventionell die Idee, so im besten Sinne routiniert klingt ihr Longplay-Debüt. Genre-Fans sollten ein Ohr riskieren."
     }
   ]
