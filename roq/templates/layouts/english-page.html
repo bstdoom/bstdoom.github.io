@@ -1,20 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-    {#include partials/head /}
+  {#include partials/head /}
 </head>
 <body class="theme-body">
-    {#include partials/navigation /}
-    <main class="site-container site-main">
-        <section class="bg site-panel static-page">
-            <h2 class="heading">{=page.title}</h2>
-            <div class="static-page-content">
-                <div class="entry-content">
-                    {#insert /}
-                </div>
-            </div>
-        </section>
-    </main>
-    {#include partials/footer /}
+{#include partials/navigation /}
+<main class="site-container site-main">
+  <section class="bg site-panel static-page">
+    <h2 class="heading">{=page.title}</h2>
+    <div class="static-page-content">
+      <div class="entry-content">
+        {#insert /}
+      </div>
+    </div>
+  </section>
+</main>
+{#include partials/footer /}
 </body>
 </html>

@@ -1,50 +1,50 @@
 <!doctype html>
 <html lang="de">
 <head>
-    {#include partials/head /}
+  {#include partials/head /}
 </head>
 <body class="theme-body">
-    {#include partials/navigation /}
-    <main class="site-container site-main">
-        <section class="release-detail-page">
-            <div class="release-detail-grid">
-                <div class="release-main-column">
-                    <div class="site-content bg site-panel">
-                        {#insert /}
-                    </div>
-                </div>
-                <div class="sidebar-inner">
-                    <div class="widget bg site-panel">
-                        <div class="static-page-content">
-                            <div class="static-section">
-                                <h3 class="static-section-title">Adresse</h3>
-                                <div class="impressum-address">
-                                    {#for line in page.data.sidebar.address}
-                                        {=line}{#if line_hasNext}<br>{/if}
-                                    {/for}
-                                </div>
-                            </div>
-                            <div class="static-section">
-                                <h3 class="static-section-title">Vertreten durch</h3>
-                                <ul class="static-list">
-                                    {#for representative in page.data.sidebar.representatives}
-                                        <li>{=representative}</li>
-                                    {/for}
-                                </ul>
-                            </div>
-                            <div class="static-section">
-                                <h3 class="static-section-title">Kontakt</h3>
-                                <ul class="static-list impressum-contact">
-                                    <li>Telefon: <a href="tel:{=page.data.sidebar.contact.phone.replace(' ', '')}">{=page.data.sidebar.contact.phone}</a></li>
-                                    <li>E-Mail: <a href="mailto:{=page.data.sidebar.contact.email}">{=page.data.sidebar.contact.email}</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{#include partials/navigation /}
+<main class="site-container site-main">
+  <section class="release-detail-page">
+    <div class="release-detail-grid">
+      <div class="release-main-column">
+        <div class="site-content bg site-panel">
+          {#insert /}
+        </div>
+      </div>
+      <div class="sidebar-inner">
+        <div class="widget bg site-panel">
+          <div class="static-page-content">
+            <div class="static-section">
+              <h3 class="static-section-title">Adresse</h3>
+              <div class="impressum-address">
+                {#for line in page.data.sidebar.address}
+                {=line}{#if line_hasNext}<br>{/if}
+                {/for}
+              </div>
             </div>
-        </section>
-    </main>
-    {#include partials/footer /}
+            <div class="static-section">
+              <h3 class="static-section-title">Vertreten durch</h3>
+              <ul class="static-list">
+                {#for representative in page.data.sidebar.representatives}
+                <li>{=representative}</li>
+                {/for}
+              </ul>
+            </div>
+            <div class="static-section">
+              <h3 class="static-section-title">Kontakt</h3>
+              <ul class="static-list impressum-contact">
+                <li>Telefon: <a href="tel:{=page.data.sidebar.contact.phone.replace(' ', '')}">{=page.data.sidebar.contact.phone}</a></li>
+                <li>E-Mail: <a href="mailto:{=page.data.sidebar.contact.email}">{=page.data.sidebar.contact.email}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{#include partials/footer /}
 </body>
 </html>

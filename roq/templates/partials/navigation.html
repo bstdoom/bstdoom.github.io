@@ -1,41 +1,45 @@
 <div id="navigation">
-    <div class="site-container site-header-row">
-        <div class="brand-wrap">
-            <a class="navbar-brand" href="/">
-                <img class="site-logo" src="/assets/theme/logo.png" alt="B.S.T.">
-            </a>
-            <button class="navbar-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navbar-menu">
-                <i class="fa fa-bars"></i>
-            </button>
-        </div>
-
-        <div id="navbar-menu" class="navbar-menu-group">
-            <ul class="navbar-nav nav-primary">
-                <li class="selected"><a href="/">Home</a></li>
-                <li class="dropdown">
-                    <a href="/musik/" role="button">Musik <i class="fa fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        {#for release in cdi:releaseCatalog.map.values}
-                            {#if release.showInNavigation}
-                                <li><a href="/musik/{=release.slug}/">{=release.title} {#if release.releaseType == 'fullLength'}[LP, CD]{#else if release.releaseType == 'ep'}[EP]{#else}[Demo]{/if} ({=release.year})</a></li>
-                            {/if}
-                        {/for}
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="/info/" role="button">Info <i class="fa fa-angle-down"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="/info/impressum/">Impressum</a></li>
-                    </ul>
-                </li>
-                <li><a href="/english.html">en</a></li>
-            </ul>
-
-            <ul class="navbar-nav nav-social">
-                <li class="social-item"><a class="social-link" href="https://www.facebook.com/hamburgCityDoom" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
-                <li class="social-item"><a class="social-link" href="https://www.youtube.com/@bstdoom" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa fa-youtube"></i><span class="sr-only">YouTube</span></a></li>
-                <li class="social-item"><a class="social-link" href="https://bstdoom.bandcamp.com/" target="_blank" rel="noopener noreferrer" aria-label="Bandcamp"><i class="fa fa-bandcamp"></i><span class="sr-only">Bandcamp</span></a></li>
-            </ul>
-        </div>
+  <div class="site-container site-header-row">
+    <div class="brand-wrap">
+      <a class="navbar-brand" href="/">
+        <img alt="B.S.T." class="site-logo" src="/assets/theme/logo.png">
+      </a>
+      <button aria-controls="navbar-menu" aria-expanded="false" aria-label="Open menu" class="navbar-toggle" type="button">
+        <i class="fa fa-bars"></i>
+      </button>
     </div>
+
+    <div class="navbar-menu-group" id="navbar-menu">
+      <ul class="navbar-nav nav-primary">
+        <li class="selected"><a href="/">Home</a></li>
+        <li class="dropdown">
+          <a href="/musik/" role="button">Musik <i class="fa fa-angle-down"></i></a>
+          <ul class="sub-menu">
+            {#for release in cdi:releaseCatalog.map.values}
+            {#if release.showInNavigation}
+            <li><a href="/musik/{=release.slug}/">{=release.title} {#if release.releaseType == 'fullLength'}[LP, CD]{#else if release.releaseType ==
+              'ep'}[EP]{#else}[Demo]{/if} ({=release.year})</a></li>
+            {/if}
+            {/for}
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/info/" role="button">Info <i class="fa fa-angle-down"></i></a>
+          <ul class="sub-menu">
+            <li><a href="/info/impressum/">Impressum</a></li>
+          </ul>
+        </li>
+        <li><a href="/english.html">en</a></li>
+      </ul>
+
+      <ul class="navbar-nav nav-social">
+        <li class="social-item"><a aria-label="Facebook" class="social-link" href="https://www.facebook.com/hamburgCityDoom" rel="noopener noreferrer"
+                                   target="_blank"><i class="fa fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
+        <li class="social-item"><a aria-label="YouTube" class="social-link" href="https://www.youtube.com/@bstdoom" rel="noopener noreferrer" target="_blank"><i
+          class="fa fa-youtube"></i><span class="sr-only">YouTube</span></a></li>
+        <li class="social-item"><a aria-label="Bandcamp" class="social-link" href="https://bstdoom.bandcamp.com/" rel="noopener noreferrer" target="_blank"><i
+          class="fa fa-bandcamp"></i><span class="sr-only">Bandcamp</span></a></li>
+      </ul>
+    </div>
+  </div>
 </div>

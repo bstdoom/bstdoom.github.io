@@ -13,11 +13,26 @@
     "LP: Fucking Kill Records / Cause of Deaf Records"
   ],
   "tracks": [
-    { "name": "Nur ein Tag im Leben", "time": "11:32" },
-    { "name": "Kaltstart", "time": "11:48" },
-    { "name": "Der Tod kommt näher", "time": "04:34" },
-    { "name": "Was jetzt noch bleibt", "time": "08:01" },
-    { "name": "Der Mut", "time": "10:52" }
+    {
+      "name": "Nur ein Tag im Leben",
+      "time": "11:32"
+    },
+    {
+      "name": "Kaltstart",
+      "time": "11:48"
+    },
+    {
+      "name": "Der Tod kommt näher",
+      "time": "04:34"
+    },
+    {
+      "name": "Was jetzt noch bleibt",
+      "time": "08:01"
+    },
+    {
+      "name": "Der Mut",
+      "time": "10:52"
+    }
   ],
   "bandcampPlayerUrl": "https://bandcamp.com/EmbeddedPlayer/v=2/album=2641444744/size=large/bgcol=0d0d0d/linkcol=f1f1f1/tracklist=true/artwork=small/transparent=true/",
   "spotifyEmbedUrl": "https://open.spotify.com/embed/album/1MkkXCYQAamIyeG2EmTAkV?utm_source=generator",

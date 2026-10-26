@@ -1,84 +1,90 @@
 <!doctype html>
 <html lang="de">
 <head>
-    {#include partials/head /}
+  {#include partials/head /}
 </head>
 <body class="theme-body">
-    {#include partials/navigation /}
-    <main class="site-container site-main">
-    <section class="release-detail-page">
-        {#let release=cdi:releaseCatalog.map.get(page.data.release)}
-            <div class="release-detail-grid">
-                <div class="release-main-column">
-                    <div class="site-content bg site-panel">
-                        <h2 class="heading">{=release.title}</h2>
-                        <img class="release-detail-cover" src="{=release.coverImage}" alt="{=release.coverAlt}">
-                        <ul class="release-facts">
-                            {#for fact in release.facts}
-                                <li>{=fact}</li>
-                            {/for}
-                        </ul>
-                        {#insert /}
-                    </div>
-                </div>
-                <div class="sidebar-inner">
-                    <div class="widget bg site-panel">
-                        <h3 class="widget-title">Tracks</h3>
-                        <ol class="play-list">
-                            {#for track in release.tracks}
-                                <li><b>{=track.name}</b> ({=track.time})</li>
-                            {/for}
-                        </ol>
-                    </div>
-                    {#if release.bandcampPlayerUrl || release.spotifyEmbedUrl || release.bandcampUrl || release.bandcampVinylUrl || release.itunesUrl || release.actionLinks}
-                        <div class="widget bg site-panel">
-                            <h3 class="widget-title">Buy/Listen</h3>
-                            {#if release.bandcampPlayerUrl}
-                                <div class="release-buy-listen-player">
-                                    <iframe class="release-buy-listen-iframe" src="{=release.bandcampPlayerUrl}" width="100%" height="380" allowtransparency="true"></iframe>
-                                </div>
-                            {/if}
-                            <div class="release-buy-listen-links">
-                                {#if release.spotifyEmbedUrl}
-                                    <a class="release-buy-listen-link" href="{=release.spotifyEmbedUrl}" target="_blank" rel="noopener noreferrer" aria-label="Spotify" title="Spotify"><i class="fa fa-spotify"></i></a>
-                                {/if}
-                                {#if release.itunesUrl}
-                                    <a class="release-buy-listen-link" href="{=release.itunesUrl}" target="_blank" rel="noopener noreferrer" aria-label="iTunes" title="iTunes"><i class="fa fa-apple"></i></a>
-                                {/if}
-                                {#if release.bandcampUrl}
-                                    <a class="release-buy-listen-link" href="{=release.bandcampUrl}" target="_blank" rel="noopener noreferrer" aria-label="Bandcamp" title="Bandcamp"><i class="fa fa-bandcamp"></i></a>
-                                {/if}
-                                {#if release.bandcampVinylUrl}
-                                    <a class="release-buy-listen-link" href="{=release.bandcampVinylUrl}" target="_blank" rel="noopener noreferrer" aria-label="Bandcamp Vinyl" title="Bandcamp Vinyl"><i class="fa fa-bandcamp"></i></a>
-                                {/if}
-                                {#for action in release.actionLinks}
-                                    <a class="release-buy-listen-link" href="{=action.href}" target="_blank" rel="noopener noreferrer" aria-label="{=action.label}" title="{=action.label}"><i class="fa fa-link"></i></a>
-                                {/for}
-                            </div>
-                        </div>
-                    {/if}
-                    {#if release.reviews}
-                        <div class="widget bg site-panel">
-                            <h3 class="widget-title">Reviews</h3>
-                            <div class="reviews-list">
-                                {#for review in release.reviews}
-                                    <div class="review-item">
-                                        {#if review.url}
-                                            <a class="review-source" href="{=review.url}" target="_blank" rel="noopener noreferrer">{=review.source}</a>
-                                        {#else}
-                                            <div class="review-source">{=review.source}</div>
-                                        {/if}
-                                        <div class="review-quote">{=review.quote}</div>
-                                    </div>
-                                {/for}
-                            </div>
-                        </div>
-                    {/if}
-                </div>
+{#include partials/navigation /}
+<main class="site-container site-main">
+  <section class="release-detail-page">
+    {#let release=cdi:releaseCatalog.map.get(page.data.release)}
+    <div class="release-detail-grid">
+      <div class="release-main-column">
+        <div class="site-content bg site-panel">
+          <h2 class="heading">{=release.title}</h2>
+          <img alt="{=release.coverAlt}" class="release-detail-cover" src="{=release.coverImage}">
+          <ul class="release-facts">
+            {#for fact in release.facts}
+            <li>{=fact}</li>
+            {/for}
+          </ul>
+          {#insert /}
+        </div>
+      </div>
+      <div class="sidebar-inner">
+        <div class="widget bg site-panel">
+          <h3 class="widget-title">Tracks</h3>
+          <ol class="play-list">
+            {#for track in release.tracks}
+            <li><b>{=track.name}</b> ({=track.time})</li>
+            {/for}
+          </ol>
+        </div>
+        {#if release.bandcampPlayerUrl || release.spotifyEmbedUrl || release.bandcampUrl || release.bandcampVinylUrl || release.itunesUrl ||
+        release.actionLinks}
+        <div class="widget bg site-panel">
+          <h3 class="widget-title">Buy/Listen</h3>
+          {#if release.bandcampPlayerUrl}
+          <div class="release-buy-listen-player">
+            <iframe allowtransparency="true" class="release-buy-listen-iframe" height="380" src="{=release.bandcampPlayerUrl}" width="100%"></iframe>
+          </div>
+          {/if}
+          <div class="release-buy-listen-links">
+            {#if release.spotifyEmbedUrl}
+            <a aria-label="Spotify" class="release-buy-listen-link" href="{=release.spotifyEmbedUrl}" rel="noopener noreferrer" target="_blank" title="Spotify"><i
+              class="fa fa-spotify"></i></a>
+            {/if}
+            {#if release.itunesUrl}
+            <a aria-label="iTunes" class="release-buy-listen-link" href="{=release.itunesUrl}" rel="noopener noreferrer" target="_blank" title="iTunes"><i
+              class="fa fa-apple"></i></a>
+            {/if}
+            {#if release.bandcampUrl}
+            <a aria-label="Bandcamp" class="release-buy-listen-link" href="{=release.bandcampUrl}" rel="noopener noreferrer" target="_blank" title="Bandcamp"><i
+              class="fa fa-bandcamp"></i></a>
+            {/if}
+            {#if release.bandcampVinylUrl}
+            <a aria-label="Bandcamp Vinyl" class="release-buy-listen-link" href="{=release.bandcampVinylUrl}" rel="noopener noreferrer" target="_blank"
+               title="Bandcamp Vinyl"><i class="fa fa-bandcamp"></i></a>
+            {/if}
+            {#for action in release.actionLinks}
+            <a aria-label="{=action.label}" class="release-buy-listen-link" href="{=action.href}" rel="noopener noreferrer" target="_blank"
+               title="{=action.label}"><i class="fa fa-link"></i></a>
+            {/for}
+          </div>
+        </div>
+        {/if}
+        {#if release.reviews}
+        <div class="widget bg site-panel">
+          <h3 class="widget-title">Reviews</h3>
+          <div class="reviews-list">
+            {#for review in release.reviews}
+            <div class="review-item">
+              {#if review.url}
+              <a class="review-source" href="{=review.url}" rel="noopener noreferrer" target="_blank">{=review.source}</a>
+              {#else}
+              <div class="review-source">{=review.source}</div>
+              {/if}
+              <div class="review-quote">{=review.quote}</div>
             </div>
-        {/let}
-    </section>
-    </main>
-    {#include partials/footer /}
+            {/for}
+          </div>
+        </div>
+        {/if}
+      </div>
+    </div>
+    {/let}
+  </section>
+</main>
+{#include partials/footer /}
 </body>
 </html>

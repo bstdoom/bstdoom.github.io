@@ -4,5 +4,5 @@ import io.quarkiverse.roq.data.runtime.annotations.DataMapping
 
 @DataMapping("home")
 open class Home(
-    open var news: String = "",
+  open var news: String = "",
 )
