@@ -39,7 +39,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Generate Roq site
-        run: ./gradlew --no-daemon :roq:roqGenerate --console=plain
+        run: ./gradlew --no-daemon --no-build-cache :roq:roqGenerate --console=plain
 
       - name: Configure Pages
         uses: actions/configure-pages@v6

@@ -27,7 +27,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Generate Roq site
-        run: ./gradlew --no-daemon :roq:roqGenerate --console=plain
+        run: ./gradlew --no-daemon --no-build-cache :roq:roqGenerate --console=plain
 
       - name: Generate deployed route list
         shell: bash
@@ -75,7 +75,7 @@ jobs:
             --files-from live-routes.txt
 
       - name: Create or close broken-link issues
-        if: always()
+        if: ${{ always() && hashFiles('lychee/out.json') != '' }}
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
