@@ -1,0 +1,155 @@
+name: Check deployed links
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version-file: .java-version
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Generate Roq site
+        run: ./gradlew --no-daemon :roq:roqGenerate --console=plain
+
+      - name: Generate deployed route list
+        shell: bash
+        run: |
+          site_url="https://www.b-s-t.net"
+          : > live-routes.txt
+
+          while IFS= read -r file; do
+            relative="${file#roq/build/roq/}"
+            case "$relative" in
+              index.html)
+                route="/"
+                ;;
+              */index.html)
+                route="/${relative%index.html}"
+                ;;
+              *)
+                route="/$relative"
+                ;;
+            esac
+            printf '%s%s\n' "$site_url" "$route" >> live-routes.txt
+          done < <(find roq/build/roq -type f -name '*.html' -print | sort)
+
+          test -s live-routes.txt
+          cat live-routes.txt
+
+      - name: Restore Lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-${{ runner.os }}-${{ github.ref_name }}
+          restore-keys: |
+            lychee-${{ runner.os }}-
+
+      - name: Check deployed routes and links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: false
+          format: json
+          output: lychee/out.json
+          args: >-
+            --cache
+            --max-cache-age 7d
+            --files-from live-routes.txt
+
+      - name: Create or close broken-link issues
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test -f lychee/out.json
+
+          jq -r '. as $report |
+            ($report.error_map // {})
+            | to_entries[]
+            | .key as $source
+            | .value[]
+            | [$source, .url, .status.text, .status.details]
+            | @tsv' lychee/out.json > broken-links.tsv
+
+          {
+            echo "## Deployed link check"
+            jq -r '"- Total: \(.total)", "- Successful: \(.successful)", "- Errors: \(.errors)"' lychee/out.json
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          while IFS=$'\t' read -r source url status details; do
+            [ -n "$url" ] || continue
+            title="Broken deployed link: $url"
+
+            if ! gh issue list --state open --limit 100 --json title --jq '.[].title' \
+              | grep -Fqx "$title"; then
+              body_file="$(mktemp)"
+              {
+                echo "This link was reported by the scheduled deployed-site check."
+                echo
+                echo "- URL: $url"
+                echo "- Status: $status"
+                echo "- Details: $details"
+                echo
+                echo "Sources:"
+                jq -r --arg url "$url" '
+                  [.error_map // {}
+                   | to_entries[]
+                   | .key as $source
+                   | .value[]
+                   | select(.url == $url)
+                   | "- `\($source)`"]
+                  | unique[]' lychee/out.json
+                echo
+                echo "Workflow run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+              } > "$body_file"
+              gh issue create --title "$title" --body-file "$body_file"
+              rm -f "$body_file"
+            fi
+          done < broken-links.tsv
+
+          while IFS=$'\t' read -r number title; do
+            url="${title#Broken deployed link: }"
+            if ! jq -e --arg url "$url" '
+              [.error_map // {}
+               | to_entries[]
+               | .value[]
+               | .url]
+              | index($url) != null' lychee/out.json >/dev/null; then
+              gh issue close "$number" --comment "Resolved by deployed link check in run $GITHUB_RUN_ID."
+            fi
+          done < <(
+            gh issue list --state open --limit 100 --json number,title \
+              --jq '.[] | select(.title | startswith("Broken deployed link: ")) | [.number, .title] | @tsv'
+          )
+
+      - name: Upload link-check reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployed-link-check
+          path: |
+            live-routes.txt
+            lychee/out.json
+            broken-links.tsv
+          if-no-files-found: ignore
