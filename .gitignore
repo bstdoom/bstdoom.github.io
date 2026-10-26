@@ -26,7 +26,7 @@ out/
 
 # Kotlin ignores
 .kotlin/
-/roq/_kobweb-export/
-/roq/content/musik/*.md
-/roq/public/assets/releases/generated/
+/_kobweb-export/
+/content/musik/*.md
+/public/assets/releases/generated/
 node_modules/

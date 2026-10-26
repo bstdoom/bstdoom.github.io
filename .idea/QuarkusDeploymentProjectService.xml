@@ -3,7 +3,7 @@
   <component name="QuarkusDeploymentProjectService">
     <option name="modules">
       <map>
-        <entry key="bstdoom.roq.main">
+        <entry key="bstdoom.main">
           <value>
             <ModuleState>
               <option name="hash" value="-1617267706" />

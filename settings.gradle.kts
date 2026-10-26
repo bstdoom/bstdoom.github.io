@@ -13,5 +13,3 @@ dependencyResolutionManagement {
 rootProject.name = "bstdoom"
 
 includeBuild("gradle/build-logic")
-
-include(":roq")

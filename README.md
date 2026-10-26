@@ -14,9 +14,9 @@ Lars Live Premiere: [Cause of Deaf Fest](https://www.kph-hamburg.de/veranstaltun
 
 ## Project Architecture
 
-The static site lives in the `roq/` Gradle submodule. It contains the Kotlin
-support classes, Qute templates, content, JSON data, assets, and generated
-release pages.
+The static site is the root Gradle project. It contains the Kotlin support
+classes, Qute templates, content, JSON data, assets, and generated release
+pages. `gradle/build-logic` remains an included build for shared build logic.
 
 ## Getting Started
 
@@ -39,7 +39,7 @@ Generate the static HTML, CSS, JavaScript, and assets with:
 just roq-generate
 ```
 
-The output is written to `roq/build/roq/`. To serve an existing generated
+The output is written to `build/roq/`. To serve an existing generated
 output directory, run:
 
 ```bash

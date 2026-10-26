@@ -1,16 +1,15 @@
 # Roq migration plan
 
 This is a step-by-step migration plan for rebuilding the current Kobweb site in
-`roq/`. The current `site/` implementation remains the behavioral reference;
-`roq/_kobweb-export/` is the rendered HTML/assets snapshot to compare against.
+the root Roq project. The current Kobweb export is the rendered HTML/assets
+snapshot to compare against.
 
 The migration is incremental. Each phase should leave the Roq site runnable and
 should be verified before the next phase starts.
 
 ## Working rules
 
-- Keep `site/` and `worker/` unchanged while Roq is being developed.
-- Treat the rendered homepage in `roq/_kobweb-export/pages/index.html` as the
+- Treat the rendered homepage in `_kobweb-export/pages/index.html` as the
   initial visual/markup baseline, not as application code to copy wholesale.
 - Do not copy Kobweb runtime output from `_kobweb-export/system/` or the
   `_kobweb` worker files. Roq owns the document shell and static generation.
@@ -25,7 +24,7 @@ should be verified before the next phase starts.
 ## Phase 0: freeze the reference and record the route map
 
 - [x] Confirm the current baseline with the Kobweb export:
-  `roq/_kobweb-export/pages/index.html`.
+  `_kobweb-export/pages/index.html`.
 - [x] Record the existing route map:
   - `/`
   - `/musik/`
@@ -70,8 +69,8 @@ the full homepage.
   `content/index.html` or homepage partials.
 - [x] Keep the first navigation implementation static and explicit. Add
   generated release navigation only after the release data model is migrated.
-- [x] Preserve the existing asset URLs by copying the following from
-  `site/src/jsMain/resources/public/` into `roq/public/`:
+- [x] Preserve the existing asset URLs with the migrated files under
+  `public/`:
   - `assets/theme/logo.png`
   - `assets/background/bg1.png` through `bg4.png`
   - `css/font-awesome.min.css`
@@ -100,7 +99,7 @@ verified independently of data parsing and browser interaction.
   - heading: `B.S.T. - Hamburg City Doom`
 - [x] Render the About panel using the exact text visible in the current
   exported homepage:
-  - `site/src/jsMain/resources/data/about.json`
+  - `data/about.json`
   - `/assets/home/bandfoto.jpg`
 - [x] Initially render the About data directly from a Roq data file or page
   frontmatter. Choose one representation and keep it readable; do not recreate
@@ -109,9 +108,9 @@ verified independently of data parsing and browser interaction.
   generated `index.html` contains ordinary static HTML with no Kobweb runtime
   dependency.
 - [x] Run the full local loop:
-  - `./gradlew :roq:roqGenerate`
-  - `./gradlew :roq:roqServe`
-  - inspect the generated homepage and CSS in `roq/build/roq/`
+  - `./gradlew roqGenerate`
+  - `./gradlew roqServe`
+  - inspect the generated homepage and CSS in `build/roq/`
   - verify `/`, `/musik/`, `/info/`, `/info/impressum/`, and `/english.html`
     through the static server (HTTP 200 on port 8181).
 - [ ] Compare the simple page with the exported homepage at desktop and mobile
@@ -168,7 +167,7 @@ verified independently of data parsing and browser interaction.
 ## Phase 6: visual and behavioral parity review
 
 - [ ] Compare every route against its corresponding file under
-  `roq/_kobweb-export/pages/`.
+  `_kobweb-export/pages/`.
 - [ ] Check desktop, tablet, and mobile layouts:
   - header height and sticky behavior
   - dropdown positioning
@@ -189,8 +188,7 @@ verified independently of data parsing and browser interaction.
 - [x] Remove the obsolete `site/` and `worker/` modules after the Roq parity
   review.
 - [x] Remove Kobweb, Compose, and Kotlin Multiplatform build dependencies.
-- [x] Keep `roq/` as the active Gradle submodule and retain
-  `gradle/build-logic` for shared build logic.
+- [x] Keep `gradle/build-logic` for shared build logic.
 
 ## First implementation checklist
 
@@ -200,7 +198,7 @@ The first Roq migration change should stop after these items are complete:
 - [x] Navigation and footer partials exist.
 - [x] Dosis, Font Awesome, logo, favicon, background, and vocal CSS are wired.
 - [x] `content/index.html` renders the hero and About panel.
-- [x] `./gradlew :roq:roqGenerate` succeeds.
-- [x] `./gradlew :roq:roqServe` serves the generated page.
+- [x] `./gradlew roqGenerate` succeeds.
+- [x] `./gradlew roqServe` serves the generated page.
 - [ ] The generated page is visually comparable to the corresponding Kobweb
   export at `/`.

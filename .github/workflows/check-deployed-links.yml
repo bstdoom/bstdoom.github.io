@@ -27,7 +27,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Generate Roq site
-        run: ./gradlew --no-daemon --no-build-cache :roq:roqGenerate --console=plain
+        run: ./gradlew --no-daemon --no-build-cache roqGenerate --console=plain
 
       - name: Generate deployed route list
         shell: bash
@@ -36,7 +36,7 @@ jobs:
           : > live-routes.txt
 
           while IFS= read -r file; do
-            relative="${file#roq/build/roq/}"
+            relative="${file#build/roq/}"
             case "$relative" in
               index.html)
                 route="/"
@@ -49,7 +49,7 @@ jobs:
                 ;;
             esac
             printf '%s%s\n' "$site_url" "$route" >> live-routes.txt
-          done < <(find roq/build/roq -type f -name '*.html' -print | sort)
+          done < <(find build/roq -type f -name '*.html' -print | sort)
 
           test -s live-routes.txt
           cat live-routes.txt

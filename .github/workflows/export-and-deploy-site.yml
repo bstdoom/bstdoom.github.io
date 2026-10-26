@@ -39,7 +39,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Generate Roq site
-        run: ./gradlew --no-daemon --no-build-cache :roq:roqGenerate --console=plain
+        run: ./gradlew --no-daemon --no-build-cache roqGenerate --console=plain
 
       - name: Configure Pages
         uses: actions/configure-pages@v6
@@ -47,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./roq/build/roq
+          path: ./build/roq
 
   deploy:
     environment:

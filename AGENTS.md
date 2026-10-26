@@ -2,7 +2,7 @@
 
 ## Context
 
-This repository contains the static website of the doom metal band **b.s.t.** The active implementation is the Kotlin-only Quarkus Roq site in `roq/`.
+This repository contains the static website of the doom metal band **b.s.t.** The active implementation is the Kotlin-only Quarkus Roq site at the repository root.
 
 The previous website is broken and cannot be repaired. The goal is to **reproduce it as closely as possible** and then modernize the implementation.
 
@@ -38,7 +38,7 @@ The website is a **static site generated with Quarkus Roq**, preserving:
 
 ### Phase 1: Build and preview
 
-- Use the Kotlin-only `roq/` Gradle submodule
+- Use the Kotlin-only root Gradle project
 - Generate static output with `just roq-generate`
 - Preview development output with `just roq-serve-dev`
 
@@ -96,7 +96,6 @@ This structure should be reusable across all pages.
 - Reuse existing assets where possible
 - Avoid overengineering
 - consider all md files under `.agents/`
-- Keep `roq/` as a Gradle submodule for now
 - Keep `gradle/build-logic` available for shared build logic
 - The development server uses port 8082; internal previews should use another port
 
