@@ -5,6 +5,8 @@ compose-runtime = "1.11.4"
 kobweb = "0.25.1"
 kotlin = "2.4.21"
 markdown = "0.7.14"
+quarkus = "3.40.1.1"
+roq = "2.2.0"
 
 [libraries]
 commonmark = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
@@ -16,6 +18,10 @@ kobweb-silk = { module = "com.varabyte.kobweb:kobweb-silk", version.ref = "kobwe
 kobweb-worker = { module = "com.varabyte.kobweb:kobweb-worker", version.ref = "kobweb" }
 kobwebx-markdown = { module = "com.varabyte.kobwebx:kobwebx-markdown", version.ref = "kobweb" }
 kobwebx-serialization-kotlinx = { module = "com.varabyte.kobwebx:kobwebx-serialization-kotlinx", version.ref = "kobweb" }
+quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
+quarkus-kotlin = { module = "io.quarkus:quarkus-kotlin" }
+quarkus-roq = { module = "io.quarkiverse.roq:quarkus-roq", version.ref = "roq" }
+quarkus-vertx = { module = "io.quarkus:quarkus-vertx" }
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
@@ -24,3 +30,4 @@ kobweb-library = { id = "com.varabyte.kobweb.library", version.ref = "kobweb" }
 kobweb-worker = { id = "com.varabyte.kobweb.worker", version.ref = "kobweb" }
 kobwebx-markdown = { id = "com.varabyte.kobwebx.markdown", version.ref = "kobweb" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+quarkus = { id = "io.quarkus", version.ref = "quarkus" }
