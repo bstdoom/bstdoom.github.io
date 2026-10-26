@@ -70,8 +70,8 @@ fun InfoPage() {
               ),
               DownloadItem(
                 title = "Bandfoto",
-                href = "/assets/info/bst-foto.jpg",
-                thumbnail = "/assets/info/bst-foto.jpg",
+                href = "/assets/info/band-foto.jpg",
+                thumbnail = "/assets/info/band-foto.jpg",
                 alt = "Bandfoto",
               ),
               DownloadItem(
