@@ -183,14 +183,14 @@ verified independently of data parsing and browser interaction.
 - [x] Verify generated output contains only intended HTML/CSS/assets and does
   not contain Kobweb runtime files.
 
-## Phase 7: remove duplication only after parity
+## Phase 7: retire the legacy implementation
 
-- [ ] Do not delete or alter the Kobweb implementation during the migration.
-- [ ] Once Roq has route/content/visual parity and static export is accepted,
-  decide whether duplicated assets/data should remain, be shared through a
-  deliberate build step, or be removed in a separate change.
-- [ ] Only then consider changing the default deployment workflow from Kobweb
-  to Roq.
+- [x] Roq static export is accepted and is the deployed site.
+- [x] Remove the obsolete `site/` and `worker/` modules after the Roq parity
+  review.
+- [x] Remove Kobweb, Compose, and Kotlin Multiplatform build dependencies.
+- [x] Keep `roq/` as the active Gradle submodule and retain
+  `gradle/build-logic` for shared build logic.
 
 ## First implementation checklist
 

@@ -1,8 +1,8 @@
-# Project: b.s.t. Website Rebuild (Kobweb)
+# Project: b.s.t. Website (Quarkus Roq)
 
 ## Context
 
-This repository was created as a fresh start to rebuild the official website of the doom metal band **b.s.t.** using **Kobweb (Kotlin + Compose for Web)**.
+This repository contains the static website of the doom metal band **b.s.t.** The active implementation is the Kotlin-only Quarkus Roq site in `roq/`.
 
 The previous website is broken and cannot be repaired. The goal is to **reproduce it as closely as possible** and then modernize the implementation.
 
@@ -26,7 +26,7 @@ The previous website is broken and cannot be repaired. The goal is to **reproduc
 
 ## Goal
 
-Rebuild the website as a **static site generated with Kobweb**, preserving:
+The website is a **static site generated with Quarkus Roq**, preserving:
 
 - Content (1:1 copy where possible)
 - Structure
@@ -36,12 +36,11 @@ Rebuild the website as a **static site generated with Kobweb**, preserving:
 
 ## Development Strategy
 
-### Phase 1: Basic Setup
+### Phase 1: Build and preview
 
-- Initialize a minimal Kobweb project
-- Ensure the site can be built and exported as a **static site**
-- Integrate **Bootstrap** (preferred for layout standardization)
-  - Combine with Kobweb (Silk / CSS as needed)
+- Use the Kotlin-only `roq/` Gradle submodule
+- Generate static output with `just roq-generate`
+- Preview development output with `just roq-serve-dev`
 
 ### Phase 2: Layout Structure
 
@@ -72,9 +71,8 @@ This structure should be reusable across all pages.
 
 ### Phase 5: Deployment
 
-- Set up a **GitHub Actions workflow** to:
-  - Build the Kobweb project
-  - Export a static site
+- Use the GitHub Actions workflow to:
+  - Build and generate the Roq project
   - Deploy to **GitHub Pages**
 
 ---
@@ -85,6 +83,8 @@ This structure should be reusable across all pages.
 - No CMS integration
 - Focus on static generation
 - Prefer simplicity over abstraction
+- Do not add Java sources
+- Do not reintroduce Kobweb, Compose, or the removed `site/` and `worker/` modules
 
 ---
 
@@ -96,7 +96,9 @@ This structure should be reusable across all pages.
 - Reuse existing assets where possible
 - Avoid overengineering
 - consider all md files under `.agents/`
-- Keep `site/.kobweb/conf.yaml` checked in; see [`.agents/adr/0003-keep-kobweb-marker-file-checked-in.md`](/Users/jangalinski/IdeaProjects/bstdoom/bstdoom.github.io/.agents/adr/0003-keep-kobweb-marker-file-checked-in.md)
+- Keep `roq/` as a Gradle submodule for now
+- Keep `gradle/build-logic` available for shared build logic
+- The development server uses port 8082; internal previews should use another port
 
 ---
 
