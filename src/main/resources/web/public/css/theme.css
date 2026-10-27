@@ -667,6 +667,10 @@ iframe {
   line-height: 1.72;
 }
 
+.entry-content h3#lyrics ~ p {
+  white-space: pre-line;
+}
+
 .entry-content p + p,
 .static-paragraph + .static-paragraph {
   margin-top: 4px;
@@ -704,6 +708,10 @@ iframe {
 .release-paragraph {
   margin: 0 0 18px;
   line-height: 1.7;
+  white-space: pre-line;
+}
+
+.release-lyrics p {
   white-space: pre-line;
 }
 
