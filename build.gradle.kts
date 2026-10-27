@@ -1,10 +1,7 @@
-import java.awt.RenderingHints
-import java.awt.image.BufferedImage
-import javax.imageio.ImageIO
-
 plugins {
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.quarkus)
+  id("io.github.bstdoom.site-content")
 }
 
 group = "io.github.bstdoom"
@@ -59,6 +56,8 @@ configurations.configureEach {
 
 dependencies {
   implementation(enforcedPlatform(libs.quarkus.bom))
+
+  implementation(libs.quarkus.config.yaml)
   implementation(libs.quarkus.kotlin)
   implementation(libs.quarkus.roq)
   implementation(libs.quarkus.vertx)
@@ -80,100 +79,6 @@ val prepareQuarkusJavaOutput = tasks.register("prepareQuarkusJavaOutput") {
 
 tasks.matching { it.name.startsWith("quarkusGenerateCode") }.configureEach {
   dependsOn(prepareQuarkusJavaOutput)
-}
-
-val releaseSlugs = listOf(
-  "die_illusion",
-  "hamburg_city_doom",
-  "herbst",
-  "unter_deck",
-  "vier_plus_zwei",
-)
-
-val releaseRoutes = mapOf(
-  "die_illusion" to "die-illusion",
-  "hamburg_city_doom" to "hamburg-city-doom",
-  "herbst" to "herbst",
-  "unter_deck" to "unter-deck",
-  "vier_plus_zwei" to "vier-plus-zwei",
-)
-
-val generateReleasePages = tasks.register("generateReleasePages") {
-  group = "roq"
-  description = "Assemble release pages from the individual lyric Markdown files."
-  notCompatibleWithConfigurationCache("release page assembly uses the project file model")
-  inputs.dir(layout.projectDirectory.dir("lyrics"))
-  outputs.files(releaseSlugs.map { slug -> layout.projectDirectory.file("content/musik/${releaseRoutes.getValue(slug)}.md") })
-  doLast {
-    releaseSlugs.forEach { slug ->
-      val lyricDirectory = layout.projectDirectory.dir("lyrics/$slug").asFile
-      val lyricFiles = lyricDirectory.listFiles()
-        .orEmpty()
-        .filter { it.extension == "md" }
-        .sortedBy { it.name }
-      val route = releaseRoutes.getValue(slug)
-      val target = layout.projectDirectory.file("content/musik/$route.md").asFile
-      val title = lyricFiles.firstOrNull()
-        ?.readLines()
-        ?.firstOrNull { it.startsWith("## ") }
-        ?.removePrefix("## ")
-        ?: slug
-      target.writeText(
-        buildString {
-          appendLine("---")
-          appendLine("title: $title")
-          appendLine("layout: release")
-          appendLine("release: $slug")
-          appendLine("---")
-          appendLine()
-          lyricFiles.forEachIndexed { index, file ->
-            if (index > 0) appendLine()
-            appendLine(file.readText().trim())
-          }
-        }
-      )
-    }
-  }
-}
-
-val releaseImageSources = mapOf(
-  "die_illusion" to "die_illusion.jpg",
-  "hamburg_city_doom" to "hamburg_city_doom.jpg",
-  "herbst" to "herbst.jpg",
-  "unter_deck" to "unter_deck.jpg",
-  "vier_plus_zwei" to "vier_plus_zwei.jpg",
-)
-
-val generateReleaseThumbnails = tasks.register("generateReleaseThumbnails") {
-  group = "roq"
-  description = "Generate release-card thumbnails from the single full-size cover sources."
-  notCompatibleWithConfigurationCache("thumbnail generation uses ImageIO and project files")
-  inputs.files(releaseImageSources.values.map { fileName -> layout.projectDirectory.file("public/assets/releases/$fileName") })
-  val thumbnailDirectory = layout.projectDirectory.dir("public/assets/releases/generated")
-  outputs.dir(thumbnailDirectory)
-  doLast {
-    val outputDirectory = thumbnailDirectory.asFile
-    outputDirectory.deleteRecursively()
-    outputDirectory.mkdirs()
-    releaseImageSources.forEach { (slug, fileName) ->
-      val source = ImageIO.read(layout.projectDirectory.file("public/assets/releases/$fileName").asFile)
-      val size = 360
-      val thumbnail = BufferedImage(size, size, BufferedImage.TYPE_INT_RGB)
-      val graphics = thumbnail.createGraphics()
-      graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC)
-      graphics.drawImage(source, 0, 0, size, size, null)
-      graphics.dispose()
-      ImageIO.write(thumbnail, "jpg", outputDirectory.resolve("$slug-thumb.jpg"))
-    }
-  }
-}
-
-tasks.named("quarkusBuild").configure {
-  dependsOn(generateReleasePages, generateReleaseThumbnails)
-}
-
-tasks.named("quarkusDev").configure {
-  dependsOn(generateReleasePages, generateReleaseThumbnails)
 }
 
 val roqCli = providers.gradleProperty("roq.cli")

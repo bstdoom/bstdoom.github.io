@@ -3,6 +3,9 @@
 build/
 out/
 
+.gradle/
+.kotlin/
+
 # IntelliJ ignores
 *.iml
 /*.ipr
@@ -20,13 +23,3 @@ out/
 /.idea/*.iml
 /.idea/modules
 /.idea/libraries-with-intellij-classes.xml
-
-# Gradle ignores
-.gradle/
-
-# Kotlin ignores
-.kotlin/
-/_kobweb-export/
-/content/musik/*.md
-/public/assets/releases/generated/
-node_modules/

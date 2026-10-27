@@ -1,0 +1,22 @@
+# Keep the Roq site files in this module's project directory.
+quarkus:
+  roq:
+    dir: .
+    generator:
+      output-dir: roq
+      paths: /,/CNAME,/favicon.ico,/assets/**,/css/**,/fonts/**,/js/**
+
+  # Keep the standalone sample separate from other local web projects.
+  http:
+    port: 8082
+
+  # Use Roq's documented {=expression} syntax in templates.
+  qute:
+    alt-expr-syntax: true
+
+  web-bundler:
+    node-modules: build
+
+site:
+  ignored-files:
+    - "**/.gitignore"

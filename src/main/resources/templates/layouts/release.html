@@ -12,7 +12,7 @@
       <div class="release-main-column">
         <div class="site-content bg site-panel">
           <h2 class="heading">{=release.title}</h2>
-          <img alt="{=release.coverAlt}" class="release-detail-cover" src="{=release.coverImage}">
+          <img alt="{=release.coverAlt}" class="release-detail-cover" src="{=page.file('cover.jpg')}">
           <ul class="release-facts">
             {#for fact in release.facts}
             <li>{=fact}</li>

@@ -1,0 +1,5 @@
+# Release pages are assembled from data/lyrics by the Gradle build.
+*/index.md
+
+# Release-card thumbnails are generated from each release cover.
+*/cover-thumb.jpg

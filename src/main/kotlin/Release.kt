@@ -3,8 +3,6 @@ package io.github.bstdoom.roq
 data class Release(
   var slug: String = "",
   var title: String = "",
-  var coverImage: String = "",
-  var thumbnailImage: String = "",
   var coverAlt: String = "",
   var releaseType: String = "",
   var year: Int = 0,

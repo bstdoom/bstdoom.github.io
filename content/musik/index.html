@@ -12,13 +12,15 @@ layout: base
   <h2 class="heading">Veröffentlichungen</h2>
   <div class="release-grid">
     {#for release in cdi:releaseCatalog.map.values}
+    {#let releasePage=site.page('musik/' + release.slug + '/index.md')}
     <a class="release-card" href="/musik/{=release.slug}/">
-      <img alt="{=release.coverAlt}" class="release-cover" src="{=release.thumbnailImage}">
+      <img alt="{=release.coverAlt}" class="release-cover" src="{=releasePage.file('cover-thumb.jpg')}">
       <div class="release-copy">
         <div class="release-title">{=release.title}</div>
         <div class="release-meta">{=release.releaseType} ({=release.year})</div>
       </div>
     </a>
+    {/let}
     {/for}
   </div>
 </section>

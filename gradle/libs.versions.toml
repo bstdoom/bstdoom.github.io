@@ -10,6 +10,7 @@ quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quark
 quarkus-kotlin = { module = "io.quarkus:quarkus-kotlin" }
 quarkus-roq = { module = "io.quarkiverse.roq:quarkus-roq", version.ref = "roq" }
 quarkus-vertx = { module = "io.quarkus:quarkus-vertx" }
+quarkus-config-yaml = { module = "io.quarkus:quarkus-config-yaml" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
