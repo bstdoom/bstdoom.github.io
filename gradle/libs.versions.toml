@@ -1,5 +1,5 @@
 [versions]
-commonmark = "0.31.0"
+commonmark = "0.32.0"
 kotlin = "2.4.21"
 quarkus = "3.40.1.1"
 roq = "2.2.0"
