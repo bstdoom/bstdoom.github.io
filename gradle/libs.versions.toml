@@ -2,7 +2,7 @@
 commonmark = "0.32.0"
 kotlin = "2.4.21"
 quarkus = "3.40.1.2"
-roq = "2.2.0"
+roq = "2.2.1"
 
 [libraries]
 commonmark = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
